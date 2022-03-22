@@ -30,12 +30,8 @@
                     <h4 class="modalTitle pb-3">SignUp</h4>
                     <!-- -----------------------------------------------------------  -->
                 
-     
-
-
-                             
-                    <form method="POST" action="{{ route('register') }}" class="formStyle">
-                          @csrf
+                    <form action="{{route('admin.user_create')}}" method="post">
+                        @csrf
 
                       <div class="row gx-0 gy-3">
                         
@@ -73,6 +69,13 @@
                         </div>
                       </div>
                     </form>
+
+
+                    <!-- old form  -->
+
+
+                    <!-- old form  -->
+
                     <!-- -----------------------------------------------------------------  -->
                     <div class="orLink">
                       <span>Or</span>

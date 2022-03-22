@@ -13,12 +13,12 @@ class AdminController extends Controller
 {
     //
     public function index(){
-        return view('admin.admin_login');
+        return view('backend.auth.admin_login');
         // end method 
     }
 // ############################## Admin dashboard  view method  ##############################
 public function dashboard(){
-    return view('admin.index');
+    return view('backend.index');
 }
 //  ############################## Admin Login request get  ##############################
 public function login(Request $request){
@@ -43,7 +43,7 @@ public function login(Request $request){
 // ##############################  admin register page view  ##############################
     public function admin_register(){
 
-            return view('admin.admin_register');
+            return view('backend.auth.admin_register');
 
     }
 // ##############################  admin User create by register  ##############################
@@ -53,9 +53,7 @@ public function login(Request $request){
     $data =array();
     $data['name']=$request->name;
     $data['email']=$request->email;
-    $pwdcode = $request->password;
-    $data['code']=$pwdcode;
-    $data['password']= Hash::make($pwdcode);
+    $data['password']= Hash::make($request->password);
     $data['created_at']=  Carbon::now();
 
     Admin::insert($data);

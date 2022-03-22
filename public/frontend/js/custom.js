@@ -3,9 +3,12 @@ $('.navTrigger').click(function(){
 })
 
 $('.backDrop').click(function(){
-  $('html').removeClass('actNav actNavD');
+  $('html').removeClass('actNav actNavD activeSearch');
 })
 
+$('.dbSearch_icon').click(function(){
+  $('html').addClass('activeSearch');
+})
 
 $('.navTrigger2').click(function(){
   $('html').toggleClass('actNavD');

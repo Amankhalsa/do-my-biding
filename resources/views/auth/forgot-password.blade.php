@@ -1,36 +1,65 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+
+@extends('frontend.home_master')
+@section('title', 'Home' )
+@section('home_content')
+
+<!-- section 1 -->
+<section>
+      <div class="bannerColMain">
+        <div class="container position-relative">
+          <div class="bannerContent">
+
+            <p>Lorem Ipsum is simply dummy text of the printing and typesettin</p>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
 
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('password.email') }}">
-            @csrf
 
             <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <x-button>
-                    {{ __('Email Password Reset Link') }}
-                </x-button>
+<!-- section 1 -->
+<section>
+      <div class="pageContent">
+        <div class="container">
+          <div class="loginContent">
+            <div class="row g-0">
+           
+              <div class="col-lg-auto">
+                <div class="loginColMain">
+                  <div class="loginCol">
+                    <h4 class="modalTitle pb-3">Forgot password:</h4>
+                    <form method="POST" action="{{ route('password.email') }}">
+                                   @csrf
+                      <div class="row gx-0 gy-3">
+                 
+                        <div class="col-12">
+                          <div class="iconFldCol2">
+                            <label for="email" class="fldIcon2"><img src="{{asset('frontend/images/email-icon.png')}}" alt="..."></label>
+                            <input id="email" type="email" name="email"  class="form-control" :value="old('email')" required autofocus>
+                        </div>
+                        </div>
+              
+                  
+                        <div class="col-12">
+                          <button class="btn gradientBtn w-100">Email Password Reset Link</button>
+                        </div>
+                      </div>
+                    </form>
+                  
+                  
+                  </div>
+                </div>
+              </div>
             </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end login section  -->
+
+
+@endsection

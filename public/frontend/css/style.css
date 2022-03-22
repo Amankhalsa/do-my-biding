@@ -1433,6 +1433,17 @@ a, .btn {
   	visibility: visible;
   	pointer-events: initial;
   }
+  .backDrop {
+  	position: fixed;
+  	left: 0;
+  	right: 0;
+  	top: 0;
+  	bottom: 0;
+  	background-color: rgba(0,0,0,0.4);
+    opacity: 0;
+  	visibility: hidden;
+  	pointer-events: none;
+  }
 }
 @media (max-width: 991px) {
   .navigationCol {
@@ -1527,7 +1538,33 @@ a, .btn {
   	width: 100%;
   }
 
-
+  .headerSearchCol {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    -webkit-transition: all 300ms ease-in-out 0s;
+    -o-transition: all 300ms ease-in-out 0s;
+    transition: all 300ms ease-in-out 0s;
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+    padding: 20px;
+    background-color: #fff;
+  }
+  .activeSearch .headerSearchCol {
+  	-webkit-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+  }
+  .dbSearchCol {
+  	width: 100%;
+  }
+  .activeSearch .backDrop {
+  	opacity: 1;
+  	visibility: visible;
+  	pointer-events: initial;
+  }
 }
 @media (max-width: 767px) {
   .fldBorder {

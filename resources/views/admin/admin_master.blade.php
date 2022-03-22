@@ -60,7 +60,7 @@
         <!-- Main js -->
 <script src="{{asset('panel/assets/js/main.js')}}"></script>
 
-    
+<script type="text/javascript" src="{{asset('js/app.js')}}"></script>
      
 
 
