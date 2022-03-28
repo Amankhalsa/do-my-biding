@@ -15,10 +15,28 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+             $table->string('name');
+            $table->string('type')->nullable()->comment('user type');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->double('phone_number')->nullable();
+            $table->text('about_yourself')->nullable();
+            $table->text('country')->nullable();
+            $table->text('city')->nullable();
+            $table->text('state')->nullable();
+            $table->double('postcode')->unique();
+            $table->text('address')->nullable();
+            $table->text('Activities_and_Interests')->nullable();
+            $table->text('website_url')->nullable();
+            $table->string('gender')->nullable();
+            $table->integer('gender_public')->default(0)->comment('0=hide,1=show');
+            $table->date('dob')->nullable();
+            $table->integer('dob_public')->default(0)->comment('0=hide,1=show');
+            $table->text('Details')->nullable();
+            $table->string('Statistics')->nullable();     
+            $table->tinyinteger('status')->default(0)->comment('0=inactive,1=active'); 
+            $table->text('profile_photo_path')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

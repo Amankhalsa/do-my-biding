@@ -37,7 +37,7 @@
                         <div class="col-12">
                           <div class="iconFldCol2">
                             <label for="email" class="fldIcon2"><img src="{{asset('frontend/images/email-icon.png')}}" alt="..."></label>
-                            <input id="email" type="email" name="email"  class="form-control" :value="old('email')" required autofocus>
+                            <input id="email" type="email" name="email"  class="form-control"  required autofocus>
                           </div>
                         </div>
                         <div class="col-12">

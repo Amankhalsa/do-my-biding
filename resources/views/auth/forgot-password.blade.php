@@ -10,12 +10,12 @@
         <div class="container position-relative">
           <div class="bannerContent">
 
-            <p>Lorem Ipsum is simply dummy text of the printing and typesettin</p>
+          <p>Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.</p>
+
           </div>
         </div>
       </div>
     </section>
-
 
 
             <!-- Email Address -->
@@ -29,17 +29,18 @@
             <div class="row g-0">
            
               <div class="col-lg-auto">
-                <div class="loginColMain">
+                <div class="loginColMain" style="width:800px;">
+
                   <div class="loginCol">
                     <h4 class="modalTitle pb-3">Forgot password:</h4>
                     <form method="POST" action="{{ route('password.email') }}">
                                    @csrf
                       <div class="row gx-0 gy-3">
                  
-                        <div class="col-12">
+                        <div class="col-md-12">
                           <div class="iconFldCol2">
                             <label for="email" class="fldIcon2"><img src="{{asset('frontend/images/email-icon.png')}}" alt="..."></label>
-                            <input id="email" type="email" name="email"  class="form-control" :value="old('email')" required autofocus>
+                            <input id="email" type="email" name="email"  class="form-control"  required autofocus placeholder="Enter Registerd email ">
                         </div>
                         </div>
               

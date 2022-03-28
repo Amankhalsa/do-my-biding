@@ -42,16 +42,13 @@
                     <!-- ================== -->
                     <div class="col-12">
                           <div class="iconFldCol2">
-                
-                            <input id="name" type="text" name="name"  class="form-control" :value="old('email')" placeholder="Full Name" required autofocus>
-                        
-
+                            <input id="name" type="text" name="name"  class="form-control"  placeholder="Full Name" required autofocus>
                           </div>
                         </div>
                         <div class="col-12">
                           <div class="iconFldCol2">
                           <label for="email" class="fldIcon2"><img src="{{asset('frontend/images/email-icon.png')}}" alt="..."></label>
-                            <input type="email" class="form-control" name="email" id="email"  autocomplete="email" placeholder="Email Address" required>
+                            <input type="email" class="form-control" name="email" id="email"   autocomplete="email" placeholder="Email Address" required>
                           </div>
                         </div>
                     <!-- =================== -->

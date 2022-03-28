@@ -4,7 +4,7 @@
           <div class="row g-2 align-items-center">
             <div class="col-auto">
               <div class="logoCol">
-                <a href="index.html">
+                <a href="{{url('/')}}">
                   <img src="{{asset('frontend/images/logo.png')}}" alt="...">
                 </a>
               </div>
