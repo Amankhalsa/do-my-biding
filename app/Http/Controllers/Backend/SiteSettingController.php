@@ -21,8 +21,9 @@ class SiteSettingController extends Controller
         }
         // ====================== add site logo ======================
         public function add_site_logo(){
+      
               
-                    return view('backend.sitelogo.add_logo');
+            return view('backend.sitelogo.add_logo');
 
         }
 

@@ -16,7 +16,7 @@
                 <h3 class="text-dark mb-4">Manage Site/Sub Category </h3>
                 <div class="card shadow">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold"><a href="" class="btn btn-success" >
+                        <p class="text-primary m-0 font-weight-bold"><a href="{{route('add.front.subcategory')}}" class="btn btn-success" >
                         Add Sub Category </a> </p>
                     </div>
                     <div class="card-body">
@@ -26,41 +26,39 @@
                                 <thead>
                                     <tr>
                                         <th>S.No</th>
-                                        <th>Category Id </th>
+                                        <th>Category Name </th>
                                         <th>Sub Category Name</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                             
+                             @foreach($get_subcategory as $key =>$value)
                                     <tr>
-<td>
-<img class="rounded-circle mr-2" width="30" height="30" src="{{url('upload/no_image.jpg')}}"></td>
-<td>    </td>
-<td>  </td>
-<td class="text-center"> </td>
+<td class="text-center">
+ {{$key+1}}</td>
+
+<td>  {{ucwords($value['categoryname']['category_name'])}}  </td>
+<td >{{ucwords($value->subcategory_name) }} </td>
 
 
 <td>
 
+<!-- edit -->
 <button class="btn btn-light" style="margin-left: 5px;" type="submit">
-<a href="">    <i class=" fa fa-eye"> </i></a>
-</button>
-
-<button class="btn btn-light" style="margin-left: 5px;" type="submit">
-<a href="">
+<a href="{{route('edit.front.subcategory',$value->id)}}">
     <i class="fa fa-pencil-alt" style="font-size: 15px;"></i>
 </a>
 </button>
+<!-- delete -->
 <button class="btn btn-light" style="margin-left: 5px;" type="submit">
-<a href="" id="delete">
+<a href="{{route('delete.front.subcategory',$value->id)}}" id="delete">
     <i class="fa fa-trash" style="font-size: 15px;"></i> 
 </a>
 </button>
 
 </td>
                                     </tr>   
-                  
+                  @endforeach
                                 </tbody>
                             
                             </table>

@@ -142,6 +142,17 @@ Route::get('/delete/{id}',[CategoryController::class, 'delete_front_category'])-
 #################### category prefix end  ####################
 Route::prefix('subcategory')->group(function(){
 Route::get('/view',[SubCategoryController::class, 'view_front_subcategory'])->name('view.front.subcategory');
+//add sub category 
+Route::get('/add',[SubCategoryController::class, 'add_front_subcategory'])->name('add.front.subcategory');
+//store sub category 
+Route::post('/store',[SubCategoryController::class, 'store_front_subcategory'])->name('store.front.subcategory');
+// edit sub category 
+Route::get('/edit/{id}',[SubCategoryController::class, 'edit_front_subcategory'])->name('edit.front.subcategory');
+// update.front.subcategory
+Route::post('/update/{id}',[SubCategoryController::class, 'update_front_subcategory'])->name('update.front.subcategory');
+
+// delete.front.subcategory
+Route::get('/delete/{id}',[SubCategoryController::class, 'delete_front_subcategory'])->name('delete.front.subcategory');
 
 });
 #################### sub category prefix end  ####################
