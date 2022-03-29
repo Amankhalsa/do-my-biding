@@ -1,4 +1,4 @@
-@extends('Backend.admin_master')
+@extends('backend.admin_master')
 @section('title', 'Edit site Category')
 @section('admin_section')
 <div class="row">
