@@ -100,10 +100,10 @@ class SiteSettingController extends Controller
             return redirect()->route('view.site.logo')->with($notification);
         }
 
-// ====================  Delete logo ========================
+        // ====================  Delete logo ========================
         public function delete_site_logo($id){
 
-         $logoimage = Sitelogo::find($id);
+                $logoimage = Sitelogo::find($id);
                 $old_logo_image =$logoimage->logo;
                 // dd($old_banner_image);
                    if (file_exists($old_logo_image)) 
