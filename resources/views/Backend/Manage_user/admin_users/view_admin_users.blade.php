@@ -17,7 +17,7 @@
                 <div class="card shadow">
                     <div class="card-header py-3">
                         
-                        <p class="text-primary m-0 font-weight-bold"><a href="" class="btn btn-success">Add user </a> </p>
+                        <p class="text-primary m-0 font-weight-bold"><a href="{{route('admin.register')}}" class="btn btn-success">Add user </a> </p>
                        
                     </div>
                     <div class="card-body">
@@ -37,7 +37,7 @@
                                 <tbody>
                                     @foreach($get_admin_users as $key => $value)
                                     <tr>
-                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="{{asset('upload/images/'.$value->profile_photo_path)}}">{{$value->name}}</td>
+                                        <td><img class="rounded-circle mr-2" width="30" height="30" src="{{asset($value->profile_photo_path)}}">{{$value->name}}</td>
                                         <td>{{$value->email}}</td>
                                         <td>Admin</td>
                                         <td> {{$value->dob}}   </td>
@@ -45,20 +45,16 @@
                                         </td>
                                         <td>
                                             
+                            
                                             <button class="btn btn-light" style="margin-left: 5px;" type="submit">
-                                            <a href="#">    <i class=" fa fa-eye"> </i></a>
-                                            </button>
-
-
-                                            <button class="btn btn-light" style="margin-left: 5px;" type="submit">
-                                            <a href="#">
+                                            <a href="{{route('edit.admin_user',$value->id)}}">
                                             <i class="fa fa-pencil-alt" style="font-size: 15px;"></i>
                                             </a>
                                             </button>
 
 
                                             <button class="btn btn-light" style="margin-left: 5px;" type="submit">
-                                            <a href="#" id="delete">
+                                            <a href="{{route('delete.admin_user',$value->id)}}" id="delete">
                                            
                                             <i class="fa fa-trash" style="font-size: 15px;"></i> </a>
                                             </button>

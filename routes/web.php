@@ -24,26 +24,29 @@ use App\Http\Controllers\Backend\AddLocatController;
 
 
 
-
+Route::get('/config-clear', function() {
+    Artisan::call('config:cache');
+    return "config  is cleared";
+});
 
 Route::get('/cache-clear', function() {
     Artisan::call('config:cache');
     return "Cache is cleared";
 });
 
-Route::get('/config-clear', function() {
-    Artisan::call('config:cache');
-    return "config  is cleared";
-});
+
 
 Route::get('/view-clear', function() {
     Artisan::call('view:clear');
     return "view is cleared";
 });
-
+//#################################### Front end controllers start   ####################################
 
 Route::get('/',[HomeContoller::class, 'index'])->name('home.page');
+Route::get('/services',[HomeContoller::class, 'frontend_services'])->name('serives.page');
 
+
+//#################################### Front end controllers end   ####################################
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -51,7 +54,7 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-
+// ================================================ Admin prefix start  ================================================
 Route::prefix('admin')->group(function(){
 
 Route::get('/login',[AdminController::class, 'index'])->name('login_form');
@@ -59,14 +62,24 @@ Route::post('/login/owner',[AdminController::class, 'login'])->name('admin.login
 Route::get('/dashboard',[AdminController::class, 'dashboard'])->name('admin.dashboard')->middleware('admin');
 
 Route::get('/logout',[AdminController::class, 'admin_logout'])->name('admin.logout')->middleware('admin');
-
-//admin register
-// Route::get('/register',[AdminController::class, 'admin_register'])->name('admin.register');
 ########################## mange users #######################
+//admin register
+Route::get('/register',[AdminController::class, 'admin_register'])->name('admin.register')->middleware('admin');
 // admin create user 
-Route::post('/user-create',[AdminController::class, 'admin_user_create'])->name('admin.user_create');
-// Route::get('/user-create',[AdminController::class, 'admin_user_create'])->name('seller_login_form');
+Route::post('/user-create',[AdminController::class, 'admin_user_create'])->name('admin.user_create')->middleware('admin');
+// Route::get('/admin-create',[AdminController::class, 'admin_user_create'])->name('seller_login_form')->middleware('admin');
+Route::get('/view/admin-user',[AdminController::class, 'add_admin_user'])->name('add.admin_user')->middleware('admin');
+// edit admin user 
+Route::get('/edit/admin-profile/{id}',[AdminController::class, 'edit_admin_user'])->name('edit.admin_user')->middleware('admin');
+//update admin user profile 
+Route::post('/update/admin-profile/{id}',[AdminController::class, 'update_admin_user'])->name('update.admin_user')->middleware('admin');
 
+Route::get('/delete/admin-user/{id}',[AdminController::class, 'delete_admin_user'])->name('delete.admin_user')->middleware('admin');
+
+
+
+
+// ======================== admin user =================
 // =================== add admin user ============================
 
 //################################## admin middleware start  ##################################
@@ -170,20 +183,17 @@ Route::get('/delete/{id}',[AddLocatController::class, 'delete_frontview_location
 
 
     });
-// locations prefix end from here 
+
 #################### sub category prefix end  ####################
 });
+
 //################################## admin middleware end  ##################################
 
-// Manage site users prefix  end 
 
-// =================== Manage and edit site user ==========================
-
-
-// ======================== admin user =================
-Route::get('/view/admin-user',[AdminController::class, 'add_admin_user'])->name('add.admin_user');
 
 });
+// ================================================ Admin prefix end  ================================================
+
 
 
 

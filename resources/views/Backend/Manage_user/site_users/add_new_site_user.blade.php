@@ -1,9 +1,7 @@
 @extends('backend.admin_master')
 @section('title', 'Add new site user')
 @section('admin_section')
-
-
-      <style type="text/css">
+<style type="text/css">
             .required:after {
     content:" *";
     color: red;

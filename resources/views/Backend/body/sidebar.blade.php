@@ -23,12 +23,16 @@
             </a>
               <div class="submenuColMain">
               <ul class="subMenuCol">
+              <li><a href="{{url('/')}}" class="subMenuLink">Viit site </a></li>
                 <li><a href="{{route('view.all.location')}}" class="subMenuLink">Add Locations</a></li>
+   
+
          
 
               </ul>
             </div>
           </li>
+          <!-- ========= logo setting   =========-->
           <li class="navItem">
             <a href="{{route('view.site.logo')}}" class="navLink">
               <span class="navIcon">
@@ -37,6 +41,7 @@
               <span class="navText">Logo Settings</span>
             </a>
           </li>
+          <!-- ========= Banner images   =========-->
           <li class="navItem">
             <a href="{{route('view.front.banners')}}" class="navLink">
               <span class="navIcon">
@@ -45,6 +50,48 @@
               <span class="navText">Banner Image</span>
             </a>
           </li>
+          <!-- ========= Admin User  =========-->
+          <li class="navItem">
+            <a href="{{ route('add.admin_user')}}" class="navLink">
+              <span class="navIcon">
+                <img src="{{asset('frontend/images/nav-icon-12.png')}}" alt="...">
+              </span>
+              <span class="navText">Admin User</span>
+            </a>
+          </li>
+          <!-- ========= Admin User  ========= -->
+          <!-- ========= Manage Users  ========= -->
+          <li class="navItem sMenuLink">
+            <a href="javascript:void(0)" class="navLink">
+              <span class="navIcon">
+                <img src="{{asset('frontend/images/nav-icon-10.png')}}" alt="...">
+              </span>
+              <span class="navText">Manage Users</span>
+            </a>
+            <div class="submenuColMain">
+              <ul class="subMenuCol">
+                <li><a href="{{ route('add.site_user')}}" class="subMenuLink">Site users </a></li>
+                <!-- <li><a href="javascript:void(0)" class="subMenuLink">Reset Password</a></li> -->
+              </ul>
+            </div>
+          </li>
+          <!--  ========= Manage Users  =========-->
+          <!-- ========= Categories =========== -->
+          <li class="navItem sMenuLink">
+            <a href="javascript:void(0)" class="navLink">
+              <span class="navIcon">
+                <img src="{{asset('frontend/images/nav-icon-14.png')}}" alt="...">
+              </span>
+              <span class="navText">Categories</span>
+            </a>
+            <div class="submenuColMain">
+              <ul class="subMenuCol">
+                <li><a href="{{route('view.front.category')}}" class="subMenuLink">Categories</a></li>
+                <li><a href="{{route('view.front.subcategory')}}" class="subMenuLink">Sub Categories </a></li>
+              </ul>
+            </div>
+          </li>
+        <!-- ============== Categories ================ -->
           <li class="navItem">
             <a href="javascript:void(0)" class="navLink">
               <span class="navIcon">
@@ -97,32 +144,7 @@
               </ul>
             </div>
           </li>
-                  <!-- Admin User -->
-          <li class="navItem">
-            <a href="{{ route('add.admin_user')}}" class="navLink">
-              <span class="navIcon">
-                <img src="{{asset('frontend/images/nav-icon-12.png')}}" alt="...">
-              </span>
-              <span class="navText">Admin User</span>
-            </a>
-          </li>
-          <!-- Admin User -->
-          <!-- Manage Users -->
-          <li class="navItem sMenuLink">
-            <a href="javascript:void(0)" class="navLink">
-              <span class="navIcon">
-                <img src="{{asset('frontend/images/nav-icon-10.png')}}" alt="...">
-              </span>
-              <span class="navText">Manage Users</span>
-            </a>
-            <div class="submenuColMain">
-              <ul class="subMenuCol">
-                <li><a href="{{ route('add.site_user')}}" class="subMenuLink">Site users </a></li>
-                <li><a href="javascript:void(0)" class="subMenuLink">Reset Password</a></li>
-              </ul>
-            </div>
-          </li>
-          <!-- Manage Users -->
+            
             
           <li class="navItem sMenuLink">
             <a href="javascript:void(0)" class="navLink">
@@ -139,35 +161,7 @@
             </div>
           </li>
 
-          <li class="navItem">
-            <a href="javascript:void(0)" class="navLink">
-              <span class="navIcon">
-                <img src="{{asset('frontend/images/nav-icon-13.png')}}" alt="...">
-              </span>
-              <span class="navText">Groups</span>
-            </a>
-          </li>
-
-<!-- ========= Categories =========== -->
-          <li class="navItem sMenuLink">
-            <a href="javascript:void(0)" class="navLink">
-              <span class="navIcon">
-                <img src="{{asset('frontend/images/nav-icon-14.png')}}" alt="...">
-              </span>
-              <span class="navText">Categories</span>
-            </a>
-            <div class="submenuColMain">
-              <ul class="subMenuCol">
-                <li><a href="{{route('view.front.category')}}" class="subMenuLink">Categories</a></li>
-                <li><a href="{{route('view.front.subcategory')}}" class="subMenuLink">Sub Categories </a></li>
-              </ul>
-            </div>
-          </li>
-<!-- ============== Categories ================ -->
-
-
-
-
+   
           <li class="navItem">
             <a href="javascript:void(0)" class="navLink">
               <span class="navIcon">

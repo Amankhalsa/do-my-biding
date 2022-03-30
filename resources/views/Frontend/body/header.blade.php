@@ -1,3 +1,6 @@
+@php 
+$get_logo = DB::table('sitelogos')->first();
+@endphp
 <header>
       <div class="headerColMain">
         <div class="container">
@@ -5,7 +8,7 @@
             <div class="col-auto">
               <div class="logoCol">
                 <a href="{{url('/')}}">
-                  <img src="{{asset('frontend/images/logo.png')}}" alt="...">
+          <img src="{{(!empty($get_logo->logo)? asset($get_logo->logo) : asset($get_logo->logo))}}">
                 </a>
               </div>
             </div>
@@ -26,7 +29,7 @@
                       </a>
                     </li>
                     <li>
-                      <a href="javascript:void(0)" class="mLink2">
+                      <a href="{{route('serives.page')}}" class="mLink2">
                         <span class="menuIcon"><img src="{{asset('frontend/images/menu-icon-3.png')}}" alt=""></span>
                         <span class="menuText">Browse Services</span>
                       </a>
