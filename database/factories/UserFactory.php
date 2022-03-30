@@ -31,6 +31,7 @@ class UserFactory extends Factory
             'city' =>$this->faker->streetName, 
             'dob' => $this->faker->dateTimeBetween('1990-01-01', '2012-12-31'),
             'gender' => $this->faker->randomElement($array = array ('male', 'female')) ,
+            'you_are' => $this->faker->randomElement($array = array ('Individual', 'Agency')),  
             'Details'  => $this->faker->text,
              'profile_photo_path' => $this->faker->image('public/upload/images',640,480, null, false),
             'remember_token' => Str::random(10),

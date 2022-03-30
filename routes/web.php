@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\SiteSettingController;
 use App\Http\Controllers\Frontend\HomeContoller;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\AddLocatController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -155,6 +156,21 @@ Route::post('/update/{id}',[SubCategoryController::class, 'update_front_subcateg
 Route::get('/delete/{id}',[SubCategoryController::class, 'delete_front_subcategory'])->name('delete.front.subcategory');
 
 });
+// locations prefix start from here 
+Route::prefix('location')->group(function(){
+Route::get('/view',[AddLocatController::class, 'view_front_location'])->name('view.all.location');
+Route::get('/add',[AddLocatController::class, 'add_frontview_location'])->name('add.all.location');
+Route::post('/store',[AddLocatController::class, 'store_frontview_location'])->name('store.all.location');
+Route::get('/edit/{id}',[AddLocatController::class, 'edit_frontview_location'])->name('edit.all.location');
+Route::post('/update/{id}',[AddLocatController::class, 'update_frontview_location'])->name('update.all.location');
+Route::get('/delete/{id}',[AddLocatController::class, 'delete_frontview_location'])->name('delete.all.location');
+
+
+
+
+
+    });
+// locations prefix end from here 
 #################### sub category prefix end  ####################
 });
 //################################## admin middleware end  ##################################

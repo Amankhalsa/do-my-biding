@@ -1,3 +1,8 @@
+@php
+$getcat = DB::table('categories')->get();
+$getlocation = DB::table('locations')->orderBy('name')->get();
+@endphp
+
 @extends('frontend.home_master')
 @section('title', 'Home' )
 @section('home_content')
@@ -35,9 +40,10 @@
                         <div class="selectCol">
                           <select class="form-select customFormSelect" aria-label="Default select example">
                             <option selected>Select Location</option>
-                            <option value="1">Location1</option>
-                            <option value="2">Location2</option>
-                            <option value="3">Location3</option>
+                            @foreach($getlocation as $key => $value)
+                            <option value="{{$value->name}}">{{$value->name}}</option>
+                       @endforeach
+
                           </select>
                         </div>
                       </div>
@@ -48,10 +54,25 @@
                         <div class="selectCol">
                           <select class="form-select customFormSelect" aria-label="Default select example">
                             <option selected>Select Category</option>
-                            <option value="1">Category1</option>
-                            <option value="2">Category2</option>
-                            <option value="3">Category3</option>
+                          @foreach($getcat as   $catvalue) 
+                      <optgroup label="{{$catvalue->category_name}}">
+         @php $subcategories = DB::table('sub_categories')->where('category_id',$catvalue->id)->get(); @endphp
+                            @foreach($subcategories as $subvalue)
+                            <option value="{{$subvalue->subcategory_name}}">{{$subvalue->subcategory_name}}</option>
+                               @endforeach
+                                
+                              </optgroup>
+                         
+                          @endforeach
+                      
+
+
+
+
                           </select>
+
+
+
                         </div>
                       </div>
                     </div>
@@ -216,10 +237,14 @@
             <div class="row g-4">
               <div class="col-4">
                 <div class="counterCol">
+                  @php
+                  $total_member =DB::table('users')->get();
+                  @endphp
+               
                   <ul>
                     <li><img src="{{asset('frontend/images/users-icon.png')}}" alt="..." class="counterIcon"></li>
                     <li>
-                      <span class="count">13</span>
+                      <span class="count">{{ count( $total_member)}}</span>
                       <span class="countLbl">users</span>
                     </li>
                   </ul>

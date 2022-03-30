@@ -23,7 +23,7 @@
             </a>
               <div class="submenuColMain">
               <ul class="subMenuCol">
-                <li><a href="#" class="subMenuLink">Option</a></li>
+                <li><a href="{{route('view.all.location')}}" class="subMenuLink">Add Locations</a></li>
          
 
               </ul>

@@ -25,7 +25,6 @@ class SubCategoryController extends Controller
 
     //========================== store sub category  ==========================
     public function store_front_subcategory(Request $request){
- 
             $request->validate([
             'subcategory_name' =>'required',
             'category_id'=>'required | exists:categories,id',
