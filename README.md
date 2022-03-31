@@ -1,3 +1,8 @@
+        
+  * php artisan config:cache
+  * php artisan cache:clear
+  * php artisan view:clear
+
 #	…or create a new repository on the command line
 *	echo "# do-my-biding" >> README.md
 *	git init
