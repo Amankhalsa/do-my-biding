@@ -11,6 +11,22 @@
     <!-- single page css -->
     <!-- <link rel="stylesheet" href="{{asset('css/app.css')}}"> -->
 
+      <!-- Toaster CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+<style type="text/css">
+.toast-success {
+  background-color: #51A351 !important;
+}
+.toast-error {
+  background-color: #BD362F !important;
+}
+.toast-info {
+  background-color: #2F96B4 !important;
+}
+.toast-warning {
+  background-color: #F89406 !important;
+}
+</style>
     <title>@yield('title') - Do my Bidding</title>
   </head>
   <body>
@@ -119,5 +135,32 @@
     <script src="{{asset('frontend/js/custom.js')}}"></script>
     <!-- single app js  -->
     <script src="{{asset('js/app.js')}}"></script>
+     <!-- Toaster Javascript cdn -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
+
+<script>
+ @if(Session::has('message'))
+ var type = "{{ Session::get('alert-type','info') }}"
+ switch(type){
+    case 'info':
+    toastr.info(" {{ Session::get('message') }} ");
+    break;
+
+    case 'success':
+    toastr.success(" {{ Session::get('message') }} ");
+    break;
+
+    case 'warning':
+    toastr.warning(" {{ Session::get('message') }} ");
+    break;
+
+    case 'error':
+    toastr.error(" {{ Session::get('message') }} ");
+    break; 
+ }
+ @endif 
+</script>
   </body>
 </html>

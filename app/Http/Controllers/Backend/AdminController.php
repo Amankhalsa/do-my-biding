@@ -65,6 +65,8 @@ public function login(Request $request){
     $data =array();
     $data['name']=$request->name;
     $data['email']=$request->email;
+    $data['type']='Admin';
+
     $data['password']= Hash::make($request->password);
     $data['created_at']=  Carbon::now();
 
@@ -94,7 +96,7 @@ public function login(Request $request){
         //     'phone_number' =>'required|numeric',
         //     'gender' =>'required',
         //     'dob' =>'required|date',
-        //     'postcode' =>'required|numeric|digits:5',
+        //     'postcode' =>'required',
         //     'address' =>'required',
         //     'country' =>'required',
         //     'profile_photo_path' =>'required|image|mimes:jpg,png,jpeg,svg,webp',
@@ -221,7 +223,7 @@ public function store_site_user(Request $request){
             'phone_number' =>'required|numeric',
             'gender' =>'required',
             'dob' =>'required|date',
-            'postcode' =>'required|numeric|digits:5',
+            'postcode' =>'required',
             'address' =>'required',
             'country' =>'required',
             'profile_photo_path' =>'required|image|mimes:jpg,png,jpeg,svg,webp',

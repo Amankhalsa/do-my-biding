@@ -24,11 +24,8 @@
               <div class="submenuColMain">
               <ul class="subMenuCol">
               <li><a href="{{url('/')}}" class="subMenuLink">Viit site </a></li>
-                <li><a href="{{route('view.all.location')}}" class="subMenuLink">Add Locations</a></li>
-   
-
-         
-
+                <li><a href="{{route('view.all.location')}}" class="subMenuLink" target="_blank">Add Locations</a></li>
+  
               </ul>
             </div>
           </li>

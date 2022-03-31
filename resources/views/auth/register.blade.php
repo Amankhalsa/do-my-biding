@@ -49,6 +49,9 @@
                           <div class="iconFldCol2">
                           <label for="email" class="fldIcon2"><img src="{{asset('frontend/images/email-icon.png')}}" alt="..."></label>
                             <input type="email" class="form-control" name="email" id="email"   autocomplete="email" placeholder="Email Address" required>
+                                   @error('email')
+                        <span class="text-danger"> {{$message}}</span>
+                        @enderror
                           </div>
                         </div>
                     <!-- =================== -->
@@ -56,6 +59,9 @@
                           <div class="iconFldCol2">
                           <label for="password" class="fldIcon2"><img src="{{asset('frontend/images/lock-icon.png')}}" alt="..."></label>
                                 <input  type="password" class="form-control" name="password" required autocomplete="new-password" placeholder="Password">
+                                       @error('password')
+                        <span class="text-danger"> {{$message}}</span>
+                        @enderror
                           </div>
                         </div>
                         <!-- =================== -->
@@ -63,6 +69,9 @@
                           <div class="iconFldCol2">
                           <label for="password" class="fldIcon2"><img src="{{asset('frontend/images/lock-icon.png')}}" alt="..."></label>
                           <input  type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
+                                @error('password_confirmation')
+                        <span class="text-danger"> {{$message}}</span>
+                        @enderror
                           </div>
                         </div>
                         <div class="col-12">

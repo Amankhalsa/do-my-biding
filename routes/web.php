@@ -7,6 +7,7 @@ use App\Http\Controllers\Frontend\HomeContoller;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\AddLocatController;
+use App\Http\Controllers\Frontend\PostController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,6 +45,9 @@ Route::get('/view-clear', function() {
 
 Route::get('/',[HomeContoller::class, 'index'])->name('home.page');
 Route::get('/services',[HomeContoller::class, 'frontend_services'])->name('serives.page');
+Route::get('/add-post',[PostController::class, 'frontend_addpost'])->name('add.page.view');
+Route::post('/store-post',[PostController::class, 'store_frontend_post'])->name('store.front.post');
+
 
 
 //#################################### Front end controllers end   ####################################

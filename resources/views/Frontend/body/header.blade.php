@@ -23,7 +23,7 @@ $get_logo = DB::table('sitelogos')->first();
                       </a>
                     </li>
                     <li>
-                      <a href="javascript:void(0)">
+                      <a href="{{route('add.page.view')}}">
                         <span class="menuIcon"><img src="{{asset('frontend/images/menu-icon-2.png')}}" alt=""></span>
                         <span class="menuText">Post a Service</span>
                       </a>
@@ -51,11 +51,21 @@ $get_logo = DB::table('sitelogos')->first();
                     <div class="logCol">
                       <ul>
                         <li>
+                             @auth
+                          <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a href="route('logout')"onclick="event.preventDefault();this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                            </a>
+                        </form>
+                        @else
                           <a href="{{route('login')}}">login</a>
+
                         </li>
                         <li>
                           <a href="{{route('register')}}">register</a>
                         </li>
+                         @endauth
                       </ul>
                     </div>
                   </div>

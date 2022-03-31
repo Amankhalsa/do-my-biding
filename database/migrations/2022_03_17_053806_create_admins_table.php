@@ -25,7 +25,7 @@ return new class extends Migration
             $table->text('country')->nullable();
             $table->text('city')->nullable();
             $table->text('state')->nullable();
-            $table->double('postcode')->unique();
+            $table->string('postcode')->nullable();
             $table->text('address')->nullable();
             $table->text('Activities_and_Interests')->nullable();
             $table->text('website_url')->nullable();
