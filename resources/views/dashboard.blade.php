@@ -11,6 +11,8 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     
                     You're logged in!
+                      <img src="https://students.dts.edu/wp-content/uploads/sites/5/2020/01/coming-soon.png">
+
                 </div>
             </div>
         </div>
