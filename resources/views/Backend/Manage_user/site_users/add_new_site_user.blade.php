@@ -13,9 +13,10 @@
 <div class="container rounded bg-white mb-5">
     <div class="row">
         <div class="col-md-2 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="{{(!empty($view_users->profile_photo_path)) ? url('upload/admin_images/'.$view_users->profile_photo_path):url('upload/no_image.jpg')}}" id="output"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com</span><span> </span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+        <img class="rounded-circle mt-5" width="150px" src="{{(!empty($view_users->profile_photo_path)) ? url('upload/admin_images/'.$view_users->profile_photo_path):url('upload/no_image.jpg')}}" id="output"><span class="font-weight-bold">Edogaru</span><span class="text-black-50">edogaru@mail.com</span><span> </span></div>
         </div>
-
+        {{-- col-md-6 border-right --}}
         <div class="col-md-6 border-right">
               <form action="{{route('store.newsite_user')}}" method="post" enctype="multipart/form-data">
             @csrf
@@ -121,6 +122,7 @@
                 </div>
             </div>
         </div>
+          {{-- col-md-6 border-right --}}
     
         <!-- ==================== -->
         <div class="col-md-4">
@@ -164,9 +166,7 @@
 </div>
 </div>
 
-</div>
-<!-- col md 12 end  -->
-</div>
+
 <!-- row end  -->
 
 

@@ -43,14 +43,17 @@
                     <div class="col-12">
                           <div class="iconFldCol2">
                             <input id="name" type="text" name="name"  class="form-control"  placeholder="Full Name" required autofocus>
+                                 @error('name')
+                        <span class="text-white"> {{$message}}</span>
+                        @enderror
                           </div>
                         </div>
                         <div class="col-12">
                           <div class="iconFldCol2">
                           <label for="email" class="fldIcon2"><img src="{{asset('frontend/images/email-icon.png')}}" alt="..."></label>
                             <input type="email" class="form-control" name="email" id="email"   autocomplete="email" placeholder="Email Address" required>
-                                   @error('email')
-                        <span class="text-danger"> {{$message}}</span>
+                           @error('email')
+                        <span class="text-white"> {{$message}}</span>
                         @enderror
                           </div>
                         </div>
@@ -60,7 +63,7 @@
                           <label for="password" class="fldIcon2"><img src="{{asset('frontend/images/lock-icon.png')}}" alt="..."></label>
                                 <input  type="password" class="form-control" name="password" required autocomplete="new-password" placeholder="Password">
                                        @error('password')
-                        <span class="text-danger"> {{$message}}</span>
+                        <span class="text-white"> {{$message}}</span>
                         @enderror
                           </div>
                         </div>
@@ -70,7 +73,7 @@
                           <label for="password" class="fldIcon2"><img src="{{asset('frontend/images/lock-icon.png')}}" alt="..."></label>
                           <input  type="password" class="form-control" name="password_confirmation" required autocomplete="new-password" placeholder="Confirm Password">
                                 @error('password_confirmation')
-                        <span class="text-danger"> {{$message}}</span>
+                        <span class="text-white"> {{$message}}</span>
                         @enderror
                           </div>
                         </div>
@@ -91,7 +94,10 @@
                       </div>
                     </div>
                     <div class="resendActivationCol">
-                      <a href="javascript:void(0)" class="forgotLink">Forgot my password</a>
+                  
+                       @if (Route::has('password.request'))
+                              <a href="{{ route('password.request') }}" class="forgotLink">Forgot password</a>
+                              @endif
                       <!-- <h5 class="pb-2">Resend activation link</h5>
                       <form action="" class="formStyle">
                         <div class="row gx-0 gy-3">

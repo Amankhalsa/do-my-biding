@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\AddLocatController;
 use App\Http\Controllers\Frontend\PostController;
+use App\Http\Controllers\Backend\SubSubCategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,6 +48,8 @@ Route::get('/',[HomeContoller::class, 'index'])->name('home.page');
 Route::get('/services',[HomeContoller::class, 'frontend_services'])->name('serives.page');
 Route::get('/add-post',[PostController::class, 'frontend_addpost'])->name('add.page.view');
 Route::post('/store-post',[PostController::class, 'store_frontend_post'])->name('store.front.post');
+// apned sub category in admin padenl area 
+Route::get('/ajax/{category_id}', [PostController::class, 'GetSub_Category']);
 
 
 
@@ -159,6 +162,8 @@ Route::get('/delete/{id}',[CategoryController::class, 'delete_front_category'])-
 });
 #################### category prefix end  ####################
 Route::prefix('subcategory')->group(function(){
+
+    
 Route::get('/view',[SubCategoryController::class, 'view_front_subcategory'])->name('view.front.subcategory');
 //add sub category 
 Route::get('/add',[SubCategoryController::class, 'add_front_subcategory'])->name('add.front.subcategory');
@@ -171,6 +176,30 @@ Route::post('/update/{id}',[SubCategoryController::class, 'update_front_subcateg
 
 // delete.front.subcategory
 Route::get('/delete/{id}',[SubCategoryController::class, 'delete_front_subcategory'])->name('delete.front.subcategory');
+// ================== sub sub  category started ===================
+Route::get('/sub/sub-view',[SubSubCategoryController::class, 'view_sub_subcategory'])->name('view.front.sub_subcategory');
+
+// add page for sub sub category 
+Route::get('/sub/add',[SubSubCategoryController::class, 'add_sub_subcategory'])->name('add.sub.subcategory');
+
+// Ajax for append sub category 
+Route::get('/ajax/{category_id}', [SubSubCategoryController::class, 'GetSubCategory']);
+//store sub sub cat data 
+Route::post('/sub/store',[SubSubCategoryController::class, 'store_sub_subcategory'])->name('store.sub.subcategory');
+// edit sub sub cat data 
+Route::get('/sub/edit/{id}',[SubSubCategoryController::class, 'edit_sub_subcategory'])->name('edit.sub.subcategory');
+// update.sub.subcategory
+Route::post('/sub/update/{id}',[SubSubCategoryController::class, 'update_sub_subcategory'])->name('update.sub.subcategory');
+//delete sub sub cat data 
+Route::get('/sub/delete/{id}',[SubSubCategoryController::class, 'delete_sub_subcategory'])->name('delete.sub.subcategory');
+
+
+
+
+
+
+
+
 
 });
 // locations prefix start from here 

@@ -85,6 +85,8 @@
               <ul class="subMenuCol">
                 <li><a href="{{route('view.front.category')}}" class="subMenuLink">Categories</a></li>
                 <li><a href="{{route('view.front.subcategory')}}" class="subMenuLink">Sub Categories </a></li>
+                <li><a href="{{route('view.front.sub_subcategory')}}" class="subMenuLink">Sub SubCategories </a></li>
+
               </ul>
             </div>
           </li>

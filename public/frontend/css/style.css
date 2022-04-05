@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
-
 :root {
   --primaryColor: #3b5c89;
   --baseColor: #565555;
@@ -11,7 +10,6 @@
   --extraBold: 800;
   --baseFont: 'Poppins', sans-serif;
 }
-
 body {
   font-family: var(--baseFont);
   color: var(--baseColor);
@@ -1326,6 +1324,148 @@ a, .btn {
 }
 
 
+
+/* new css */
+.postAdCol {
+	padding: 30px 0 50px;
+}
+.postCardMain {
+  border: 1px solid rgba(0,0,0,0.1);
+}
+.postHeader {
+	padding: 15px 20px;
+	background-color: #3e5e8c;
+	color: #fff;
+}
+.postHeader h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+.postBody {
+	padding: 20px 20px 30px;
+}
+.checkCol a {
+	color: var(--primaryColor);
+}
+.catOptionCol {
+	padding-top: 12px;
+}
+
+
+.formStyle2, .formStyle2 .form-select, .formStyle2 .form-control {
+	font-size: 14px;
+}
+.formStyle2 .form-label {
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: 600;
+	color: #999;
+	letter-spacing: 1px;
+	margin-bottom: 5px;
+}
+.formStyle2 .form-check-input:checked {
+	background-color: #d87f36;
+	border-color: #d87f36;
+}
+.formStyle2 .form-check-input:focus, .formStyle2 .form-select:focus, .formStyle2 .form-control:focus {
+	box-shadow: none;
+}
+.formStyle2 .form-select, .formStyle2 .form-control {
+  border-color: #e8e8e8;
+  height: 44px;
+}
+.formStyle2 textarea.form-control {
+  height: 100px;
+  resize: none;
+}
+.formStyle2 .btn {
+	padding: 10px 25px;
+	font-size: 14px;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+
+
+/* fileupload */
+.upload__inputfile {
+	position: absolute;
+	z-index: 5;
+	top: 0;
+	left: 0;
+	height: 100%;
+	opacity: 0;
+	width: 100%;
+}
+.upload__btn {
+	display: block;
+	text-align: center;
+	padding: 20px;
+	transition: all 0.3s ease;
+	cursor: pointer;
+	border: 2px dashed #e8e8e8;
+	border-radius: 4px;
+	position: relative;
+}
+.upload__btn:hover {
+  background-color: unset;
+  color: #3e5e8c;
+  transition: all 0.3s ease;
+}
+.upload__btn > span > img {
+	width: 40px;
+	margin-bottom: 10px;
+}
+.upload__btn > p {
+  margin: 0;
+}
+.upload__btn-box {
+  margin-bottom: 10px;
+}
+.upload__img-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -10px;
+}
+.upload__img-box {
+  width: 100px;
+  padding: 0 10px;
+  margin-bottom: 12px;
+}
+.upload__img-close {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  text-align: center;
+  line-height: 24px;
+  z-index: 1;
+  cursor: pointer;
+}
+.upload__img-close:after {
+  content: "✖";
+  font-size: 14px;
+  color: white;
+}
+
+.img-bg {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  padding-bottom: 100%;
+}
+/* fileUpload */
+
+
+/*   /New css */
+
+
+
 @media (min-width:1200px) {
   .actNavD .sidebarCol {
   	-webkit-transform: translateX(-100%);
@@ -1537,7 +1677,6 @@ a, .btn {
   .adReportLeft {
   	width: 100%;
   }
-
   .headerSearchCol {
     position: fixed;
     left: 0;
@@ -1658,8 +1797,6 @@ a, .btn {
   	border-radius: 0;
   }
 }
-
-
 @media (max-width:575px) {
   .counterCol > ul > li {
   	display: block;

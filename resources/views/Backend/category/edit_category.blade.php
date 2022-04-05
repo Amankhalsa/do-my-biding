@@ -13,7 +13,7 @@
 <div class="controls">
   <input  type="text"  name="category_name" value="{{$edit_catdata->category_name}}" class="form-control" placeholder="Category name English"  > 
  
-</div>
+  </div>
 </div>
 
 <div class="form-group">

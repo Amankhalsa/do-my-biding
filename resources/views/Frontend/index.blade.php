@@ -3,13 +3,10 @@ $getcat = DB::table('categories')->get();
 $getlocation = DB::table('locations')->orderBy('name')->get();
 $front_banner = DB::table('front_banners')->first();
 $get_logo = DB::table('sitelogos')->first();
-
 @endphp
-
 @extends('frontend.home_master')
 @section('title', 'Home' )
 @section('home_content')
-
 <!-- section 1 -->
 <section>
       <div class="bannerColMain" style="background-image: url('{{(!empty($front_banner->banner)? asset($front_banner->banner) : asset($get_logo->logo))}}');">

@@ -1,5 +1,5 @@
 @extends('backend.admin_master')
-@section('title', 'View site Sub Category')
+@section('title', 'View Sub subCategory')
 @section('admin_section')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
@@ -13,11 +13,11 @@
             <div id="content">
           
             <div class="container-fluid">
-                <h3 class="text-dark mb-4">Manage Site/Sub Category </h3>
+                <h3 class="text-dark mb-4">Manage Site/Sub SubCategory </h3>
                 <div class="card shadow">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold"><a href="{{route('add.front.subcategory')}}" class="btn btn-success" >
-                        Add Sub Category </a> </p>
+                        <p class="text-primary m-0 font-weight-bold"><a href="{{route('add.sub.subcategory')}}" class="btn btn-success" >
+                        Add Sub SubCategory </a> </p>
                     </div>
                     <div class="card-body">
 
@@ -27,31 +27,33 @@
                                     <tr>
                                         <th>S.No</th>
                                         <th>Category Name </th>
-                                        <th>Sub Category Name</th>
+                                        <th> SubCategory Name</th>
+                                        <th>Sub SubCategory Name</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                             @foreach($get_subcategory as $key =>$value)
+                             @foreach($getsub_subcat as $key =>$value)
                                     <tr>
 <td class="text-center">
  {{$key+1}}</td>
 
-<td>  {{ucwords($value['categoryname']['category_name'])}}  </td>
-<td >{{ucwords($value->subcategory_name) }} </td>
+<td>{{ucwords($value['categoryname']['category_name'])}}  </td>
+<td>{{ucwords($value['subcatname']['subcategory_name'])}}  </td>
+<td >{{ucwords($value->sub_subcategory_name) }} </td>
 
 
 <td>
 
 <!-- edit -->
 <button class="btn btn-light" style="margin-left: 5px;" type="submit">
-<a href="{{route('edit.front.subcategory',$value->id)}}">
+<a href="{{route('edit.sub.subcategory',$value->id)}}">
     <i class="fa fa-pencil-alt" style="font-size: 15px;"></i>
 </a>
 </button>
 <!-- delete -->
 <button class="btn btn-light" style="margin-left: 5px;" type="submit">
-<a href="{{route('delete.front.subcategory',$value->id)}}" id="delete">
+<a href="{{route('delete.sub.subcategory',$value->id)}}" id="delete">
     <i class="fa fa-trash" style="font-size: 15px;"></i> 
 </a>
 </button>

@@ -28,7 +28,6 @@ class SubCategoryController extends Controller
             $request->validate([
             'subcategory_name' =>'required',
             'category_id'=>'required | exists:categories,id',
-      
         ],[
             'subcategory_name.required' => 'Please enter Sub category name',
         ]);

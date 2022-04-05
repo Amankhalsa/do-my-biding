@@ -102,10 +102,7 @@
                           <textarea class="form-control" rows="3" name="about_yourself" placeholder="Describe yourself here..."> </textarea>
                        
                     </div>
-                 
-    
-                  
-               
+                
                     <div class="col-md-12"><label class="labels">Activities and Interests</label>
                         <!-- Activities_and_Interests -->
                           <textarea class="form-control" rows="3" name="Activities_and_Interests" placeholder="Describe Activities and Interests here...">
