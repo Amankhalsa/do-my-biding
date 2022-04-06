@@ -45,13 +45,17 @@ Route::get('/view-clear', function() {
 //#################################### Front end controllers start   ####################################
 
 Route::get('/',[HomeContoller::class, 'index'])->name('home.page');
+// showing services page 
 Route::get('/services',[HomeContoller::class, 'frontend_services'])->name('serives.page');
+//Add post page view  
 Route::get('/add-post',[PostController::class, 'frontend_addpost'])->name('add.page.view');
+// Add store in DB  
 Route::post('/store-post',[PostController::class, 'store_frontend_post'])->name('store.front.post');
-
-
-Route::get('/ajax/{category_id}', [PostController::class, 'Get_Sub_Category']);
 // apned sub category in admin padenl area 
+Route::get('/ajax/{category_id}', [PostController::class, 'Get_Sub_Category']);
+// showing add page 
+Route::get('/add-page/{id}',[HomeContoller::class, 'frontend_add'])->name('frontend.add.page');
+
 
 
 

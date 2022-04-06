@@ -15,23 +15,27 @@ use Carbon\Carbon;
 use Redirect,Response;
 use Image;
 use Auth;
+use Tracker;
+use Illuminate\Support\Facades\DB;
 class HomeContoller extends Controller
 {
-
-   
     //################# Frontend page view #####################
     public function index(){
         return view('frontend.index');
     }
-
     // brows a services 
     public function frontend_services(){
             $getpost['post_data_single_img'] =  AddPost::latest()->get();
-            
-            $getpost['post_data_multi_img'] =  MultiImg::latest()->get();
-
+       
+            $getpost['post_data_multi_img'] =  MultiImg::where('post_id')->get();
         return view('frontend.services',$getpost);
 
+    }
+    public function frontend_add($id){
+        $getaddpost['get_post_data'] =  AddPost::find($id);
+        $getaddpost['get_data_multi_img'] =  MultiImg::where('post_id','=',$id)->get();
+        // $getaddpost['visitors'] = Tracker::User(60 * 24 * 7);
+        return view('frontend.add_page',$getaddpost);
 
     }
 

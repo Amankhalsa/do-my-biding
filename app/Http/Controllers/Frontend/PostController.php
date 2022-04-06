@@ -113,7 +113,7 @@ class PostController extends Controller
             $storeadddata->sub_category_id = $request->sub_category_id;
             $storeadddata->postcode = $request->postcode;
             $storeadddata->post_title = $request->post_title;
-            $storeadddata->post_slug = str_replace(' ', '-',$request->post_title);
+            $storeadddata->post_slug = strtolower(str_replace(' ', '-',$request->post_title));
             $storeadddata->post_detail = $request->post_detail;
             $storeadddata->expected_price = $request->expected_price;
             $storeadddata->main_image = $save_url;

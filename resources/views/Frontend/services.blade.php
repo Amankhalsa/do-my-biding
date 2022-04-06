@@ -108,12 +108,14 @@
             {{-- post  --}}
             @foreach($post_data_single_img as $key => $values)
             <div class="listColMain">
-              <a href="javascript:void(0)" class="blankLink"></a>
+              <a href="{{route('frontend.add.page',$values->id )}}" class="blankLink"></a>
               <div class="row g-3">
                 <div class="col-sm-auto">
                   <div class="listImgCol">
                     <img src="{{asset($values->main_image)}}" alt="..." class="listImg">
-                    <span class="pNumberCol"> {{count($post_data_multi_img)}}</span>
+                
+                    <span class="pNumberCol"> {{count($post_data_multi_img )}}</span>
+                
                   </div>
                 </div>
                 <div class="col-sm">
@@ -124,7 +126,7 @@
                       <span class="propPriceCol">${{	$values->expected_price}}</span>
                       <p class="lineClamp2">
                       
-                      {{Str::limit(	$values->post_detail,300,$end='....')}}
+                      {{Str::limit(	$values->post_detail,250,$end='....')}}
                       </p>
                     </div>
                     <div class="propLocationCol lineClamp1">
@@ -211,15 +213,3 @@
 @endsection
 
 
- *   …or create a new repository on the command line
- *   echo "# santosh" >> README.md
- *   git init
- *   git add README.md
- *   git commit -m "first commit"
- *   git branch -M main
- *   git remote add origin https://github.com/Amankhalsa/santosh.git
- *   git push -u origin main
- *   …or push an existing repository from the command line 
- *    git remote add origin https://github.com/Amankhalsa/santosh.git
- *   git branch -M main
- *   git push -u origin main
