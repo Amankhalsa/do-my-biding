@@ -1,8 +1,6 @@
 @extends('frontend.home_master')
 @section('title', 'Services' )
 @section('home_content')
-
-
    <div class="headerHeight"></div>
     <section>
       <div class="breadcrumbCol">
@@ -107,78 +105,41 @@
           </div>
 
           <div class="propResultCol">
+            {{-- post  --}}
+            @foreach($post_data_single_img as $key => $values)
             <div class="listColMain">
               <a href="javascript:void(0)" class="blankLink"></a>
               <div class="row g-3">
                 <div class="col-sm-auto">
                   <div class="listImgCol">
-                    <img src="{{asset('frontend/images/property-img-1.jpg')}}" alt="..." class="listImg">
-                    <span class="pNumberCol">3</span>
+                    <img src="{{asset($values->main_image)}}" alt="..." class="listImg">
+                    <span class="pNumberCol"> {{count($post_data_multi_img)}}</span>
                   </div>
                 </div>
                 <div class="col-sm">
                   <div class="propertyContentCol">
                     <div class="propContentTopCol">
-                      <h4>Lorem ipsum is dummy text</h4>
-                      <p>Individual : Lorem ipsum</p>
-                      <span class="propPriceCol">$50</span>
-                      <p class="lineClamp2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+                      <h4>{{	$values->post_title}}</h4>
+                      <p>{{	$values->you_are}}</p>
+                      <span class="propPriceCol">${{	$values->expected_price}}</span>
+                      <p class="lineClamp2">
+                      
+                      {{Str::limit(	$values->post_detail,300,$end='....')}}
+                      </p>
                     </div>
                     <div class="propLocationCol lineClamp1">
-                      It is a long established fact that a reader will be distracted by the readable content .
+                      {{	$values->postcode}}
+                      
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="listColMain">
-              <a href="javascript:void(0)" class="blankLink"></a>
-              <div class="row g-3">
-                <div class="col-sm-auto">
-                  <div class="listImgCol">
-                    <img src="{{asset('frontend/images/property-img-2.jpg')}}" alt="..." class="listImg">
-                    <span class="pNumberCol">4</span>
-                  </div>
-                </div>
-                <div class="col-sm">
-                  <div class="propertyContentCol">
-                    <div class="propContentTopCol">
-                      <h4>Lorem ipsum is dummy text</h4>
-                      <p>Individual : Lorem ipsum</p>
-                      <span class="propPriceCol">$70</span>
-                      <p class="lineClamp2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
-                    </div>
-                    <div class="propLocationCol lineClamp1">
-                      It is a long established fact that a reader will be distracted by the readable content .
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="listColMain">
-              <a href="javascript:void(0)" class="blankLink"></a>
-              <div class="row g-3">
-                <div class="col-sm-auto">
-                  <div class="listImgCol">
-                    <img src="{{asset('frontend/images/property-img-3.jpg')}}" alt="..." class="listImg">
-                    <span class="pNumberCol">4</span>
-                  </div>
-                </div>
-                <div class="col-sm">
-                  <div class="propertyContentCol">
-                    <div class="propContentTopCol">
-                      <h4>Lorem ipsum is dummy text</h4>
-                      <p>Individual : Lorem ipsum</p>
-                      <span class="propPriceCol">$70</span>
-                      <p class="lineClamp2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
-                    </div>
-                    <div class="propLocationCol lineClamp1">
-                      It is a long established fact that a reader will be distracted by the readable content .
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            @endforeach
+            {{-- post  --}}
+
+         
+          
             <div class="crateAlertCol">
               <p>Receive email notifications for new ads matching your search criteria ..</p>
               <a href="javascript:void(0)" class="btn btnSecondary">Create an alert</a>
@@ -248,3 +209,17 @@
     </section>
 
 @endsection
+
+
+ *   …or create a new repository on the command line
+ *   echo "# santosh" >> README.md
+ *   git init
+ *   git add README.md
+ *   git commit -m "first commit"
+ *   git branch -M main
+ *   git remote add origin https://github.com/Amankhalsa/santosh.git
+ *   git push -u origin main
+ *   …or push an existing repository from the command line 
+ *    git remote add origin https://github.com/Amankhalsa/santosh.git
+ *   git branch -M main
+ *   git push -u origin main

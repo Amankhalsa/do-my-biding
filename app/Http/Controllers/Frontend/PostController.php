@@ -9,6 +9,7 @@ use App\Models\AddPost;
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\SubSubCategory;
+use App\Models\MultiImg;
 use Carbon\Carbon; 
 use Redirect,Response;
 use Image;
@@ -68,16 +69,45 @@ class PostController extends Controller
     // store ADD post method     
         public function store_frontend_post(Request $request){
 
+            // validation 
+                $request->validate([
+            'post_title' =>'required|string|max:255',
+            'category_id'=>'required',
+            'sub_category_id'=>'required',
+            'postcode' =>'required',
+            'post_detail' =>'required',
+            'expected_price' =>'required',
+            'postcode' =>'required',
+            'phone' =>'required',
+            'agree' =>'required',
+
+           
+            'main_image' =>'required|image|mimes:jpg,png,jpeg,svg,webp|max:4096',
+        ],[
+            'post_title.required' => 'Please enter small  post title',
+            'category_id.required' => 'Please select any category',
+            'sub_category_id.required' => 'Please select any Sub category ',
+            'postcode.required' => 'Please enter your post code address',
+            'post_detail.required' => 'Please enter your post Description ',
+            'phone.required' => 'Please enter your Mobile/Phone number',
+            'main_image.max' => 'Maximum file size to upload is 4MB  . If you are uploading a photo, try to reduce its resolution to make it under 4MB',
+            'main_image.required' => 'You must use the Upload image button to select which file you wish to upload',
+            'agree.required' => 'Please Accept Terms and Conditions, Posting Guidelines and accept the Privacy Policy. ',
+            
+        ]);
+            // validation 
+
+
             if ($request->file('main_image')) {
                 $image = $request->file('main_image');
                 $name_gen =hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
                 Image::make($image)->save('upload/user_add_images/main/'.$name_gen);
                 // ->resize(694,470) FOR RESIZE IMAGE 
-                $save_url = 'upload/product/main/'.$name_gen;
+                $save_url = 'upload/user_add_images/main/'.$name_gen;
+                // dd($save_url);
+
             }
-            $storeadddata = new AddPost();
-            
-            
+            $storeadddata = new AddPost();   
             $storeadddata->user_account_id =Auth::user()->id;
             $storeadddata->category_id = $request->category_id;
             $storeadddata->sub_category_id = $request->sub_category_id;
@@ -91,36 +121,34 @@ class PostController extends Controller
             $storeadddata->create_date =  Carbon::now();
             $storeadddata->phone =  $request->phone;
             $storeadddata->add_id = rand(000000,999999);
-            $storeadddata->phone =  $request->phone;
             $storeadddata->save();
             $dataid = $storeadddata->id;
-
-
-            dd($dataid);
-            
+            // for multiple images  loop        
             if ($request->file('photo_name')) {
                 $images = $request->file('photo_name');
                 foreach ($images as  $value) {
-            
-        $make_name =hexdec(uniqid()).'.'.$value->getClientOriginalExtension();
-        Image::make($value)->save('upload/user_add_images/multi/'.$make_name);
-        // ->resize(917,1000)
-        $uploadpath = 'upload/user_add_images/multi/'.$make_name;
+                    $make_name =hexdec(uniqid()).'.'.$value->getClientOriginalExtension();
+                    Image::make($value)->save('upload/user_add_images/multi/'.$make_name);
+                    // ->resize(917,1000)
+                    $uploadpath = 'upload/user_add_images/multi/'.$make_name;
+
+                    $storemulti_img = new MultiImg();
+                    $storemulti_img->post_id = $dataid ;
+                    $storemulti_img->photo_name = $uploadpath ;
+                    $storemulti_img->created_at = Carbon::now() ;
+                    // dd($storemulti_img);
+                    $storemulti_img->save();
                 }
-        
+      
             }
+            // for multiple images loop    
 
-            MultiImg::insert([
-                'post_id' => $$dataid,
-                'photo_name' => $uploadpath,
-                    'created_at'  => Carbon::now(),
-        
-            ]);
-
-            $notification = array(
-                'message' => 'Your post added successfully',
-                 'alert-type' => 'success' );
-            return redirect()->route('serives.page')->with($notification);
+           
+                    $notification = array(
+                        'message' => 'Your post inserted successfully',
+                        'alert-type' => 'success' );
+           
+                        return redirect()->route('serives.page')->with($notification);
             
             
         }
