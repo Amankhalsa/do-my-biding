@@ -128,6 +128,7 @@
                       
                       {{Str::limit(	$values->post_detail,250,$end='....')}}
                       </p>
+                      
                     </div>
                     <div class="propLocationCol lineClamp1">
                       {{	$values->postcode}}

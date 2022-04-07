@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\AddLocatController;
 use App\Http\Controllers\Frontend\PostController;
 use App\Http\Controllers\Backend\SubSubCategoryController;
+use App\Http\Controllers\Backend\BidController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,14 +31,10 @@ Route::get('/config-clear', function() {
     Artisan::call('config:cache');
     return "config  is cleared";
 });
-
 Route::get('/cache-clear', function() {
     Artisan::call('config:cache');
     return "Cache is cleared";
 });
-
-
-
 Route::get('/view-clear', function() {
     Artisan::call('view:clear');
     return "view is cleared";
@@ -55,9 +52,6 @@ Route::post('/store-post',[PostController::class, 'store_frontend_post'])->name(
 Route::get('/ajax/{category_id}', [PostController::class, 'Get_Sub_Category']);
 // showing add page 
 Route::get('/add-page/{id}',[HomeContoller::class, 'frontend_add'])->name('frontend.add.page');
-
-
-
 
 
 //#################################### Front end controllers end   ####################################
@@ -201,14 +195,23 @@ Route::post('/sub/update/{id}',[SubSubCategoryController::class, 'update_sub_sub
 Route::get('/sub/delete/{id}',[SubSubCategoryController::class, 'delete_sub_subcategory'])->name('delete.sub.subcategory');
 
 
+});
+//  ===================== bids  prefix ============================
+Route::prefix('bids')->group(function(){
+Route::get('/view',[BidController::class, 'front_bid_view'])->name('front.bid.view');
+// apned sub category in admin padenl area 
+Route::get('/ajax/{category_id}', [BidController::class, 'Get_Sub_Category']);
 
-
-
-
+Route::get('/edit/{id}',[BidController::class, 'front_bid_edit'])->name('front.bid.edit');
+// update.front.bidpost
+Route::post('/update/{id}',[BidController::class, 'update_front_bid'])->name('update.front.bidpost');
+Route::get('/delete/{id}',[BidController::class, 'delete_front_bid'])->name('delete.front.bidpost');
 
 
 
 });
+
+
 // locations prefix start from here 
 Route::prefix('location')->group(function(){
 Route::get('/view',[AddLocatController::class, 'view_front_location'])->name('view.all.location');

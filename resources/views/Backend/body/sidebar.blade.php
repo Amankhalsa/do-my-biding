@@ -162,7 +162,7 @@
 
    
           <li class="navItem">
-            <a href="javascript:void(0)" class="navLink">
+            <a href="{{route('front.bid.view')}}" class="navLink">
               <span class="navIcon">
                 <img src="{{asset('frontend/images/nav-icon-15.png')}}" alt="...">
               </span>

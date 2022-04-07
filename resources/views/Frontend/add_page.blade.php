@@ -120,7 +120,7 @@
                     </div>
                     <div class="col-9">
                       <div class="labelCnt">
-                        <span>{{	$get_post_data->post_detail}}</span>
+                        <span>{!!$get_post_data->post_detail!!}</span>
                       </div>
                     </div>
                   </div>
@@ -178,7 +178,7 @@
                     <h3 class="mb-0">Didn't find what you were looking for?</h3>
                   </div>
                   <div class="col-auto">
-                    <a href="javascript:void(0)" class="btn btnLink m-0 p-0 primaryColor">< Back to results</a>
+                    <a href="{{route('serives.page')}}" class="btn btnLink m-0 p-0 primaryColor">< Back to results</a>
                   </div>
                 </div>
               </div>
