@@ -18,7 +18,10 @@ class Admin
     {
 
        if(!Auth::guard('admin')->check()){
-            return redirect()->route('login_form')->with('error', "Please login first");
+        $notification = array(
+            'message' => 'Admin Please login first',
+            'alert-type' => 'error');
+            return redirect()->route('login_form')->with($notification);
         }
         return $next($request);
     }

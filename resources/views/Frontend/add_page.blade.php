@@ -32,7 +32,7 @@
                   <h5>{{$get_post_data->post_title}}</h5>
                   <div class="text1">
                     <span class="lblCol">Posted by :</span>
-                    <span class="lblCol">{{	$get_post_data['userdetail']['name']}} || on :  {{	$get_post_data->create_date}}</span>
+                    <span class="lblCol">{{	$get_post_data['userdetail']['name']}} || Posted at :  {{Carbon\Carbon::parse(	$get_post_data->create_date)->diffForHumans()}}</span>
                   </div>
                   <div class="text1">	
                     <span class="lblCol">You are :</span>
@@ -84,7 +84,7 @@
                     </div>
                     <div class="col-9">
                       <div class="labelCnt">
-                        <span class="semiBold">${{	$get_post_data->expected_price}}</span>
+                        <span class="semiBold">${{	number_format($get_post_data->expected_price)}}</span>
                       </div>
                     </div>
                   </div>
@@ -120,7 +120,7 @@
                     </div>
                     <div class="col-9">
                       <div class="labelCnt">
-                        <span>{!!$get_post_data->post_detail!!}</span>
+                        <span>{{$get_post_data->post_detail}}</span>
                       </div>
                     </div>
                   </div>

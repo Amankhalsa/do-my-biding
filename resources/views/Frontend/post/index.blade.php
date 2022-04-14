@@ -27,46 +27,56 @@ $get_logo = DB::table('sitelogos')->first();
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <label for="categoryFld" class="form-label">Category</label>
-                                        <select id="posting_category_select"  name="category_id"  class="form-select">
-                                            {{-- ========== Category select ========= --}}
-
-                                            <option class="title" disabled="disabled" 
-                                                selected="selected">Our Categories</option>
-                                            @foreach($getcat as $catvalue)
-                                            <option value="{{$catvalue->id}}">{{$catvalue->category_name}}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('category_id')
-                                        <span class="text-danger"> {{$message}}</span>
-                                        @enderror
-                                        {{-- ========== Category select ========= --}}
-                                    </div>
+    <select id="posting_category_select"  name="category_id"  class="form-select">
+        {{-- ========== Category select ========= --}}
+        <option class="title" disabled="disabled" 
+            selected="selected">Our Categories</option>
+        @foreach($getcat as $catvalue)
+        <option value="{{$catvalue->id}}">{{$catvalue->category_name}}</option>
+        @endforeach
+    </select>
+        @error('category_id')
+        <span class="text-danger"> {{$message}}</span>
+        @enderror
+    {{-- ========== Category select ========= --}}
+</div>
                                     {{-- ======================= --}}
-                                    <div class="col-lg-6">
-                                        <label for="categoryFld" class="form-label">Sub Category</label>
-                                        <select name="sub_category_id" class="form-select">
-                                            {{-- ========== sub Category select ========= --}}
-                                          <option class="title" disabled="disabled" selected="selected">Our Sub Categories</option>
+    <div class="col-lg-6">
+        <label for="categoryFld" class="form-label">Sub Category</label>
+        <select name="sub_category_id" class="form-select">
+            {{-- ========== sub Category select ========= --}}
+            <option class="title" disabled="disabled" selected="selected">Our Sub Categories</option>
 
-                                        </select>
-                                        @error('sub_category_id')
-                                        <span class="text-danger"> {{$message}}</span>
-                                        @enderror
-                                        {{-- ========== sub Category select ========= --}}
-                                    </div>
-                                    {{-- col-12 --}}
-                                    {{-- <div class="col-12">
-                    <div class="catOptionCol">
+        </select>
+        @error('sub_category_id')
+        <span class="text-danger"> {{$message}}</span>
+        @enderror
+        {{-- ========== sub Category select ========= --}}
+    </div>
 
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-                        <label class="form-check-label" for="inlineRadio1">Car Parts & Spares</label>
-                      </div>
-               
-                    </div>
-                  </div> --}}
-                                    {{-- col-12 --}}
-                                </div>
+
+    <div class="col-lg-6">
+        <label for="categoryFld" class="form-label">Sub Sub Category</label>
+        <select name="subsubcategory_id" class="form-select">
+            {{-- ========== sub Category select ========= --}}
+            <option class="title" disabled="disabled" selected="selected">Our Sub Sub Categories</option>
+        </select>
+        @error('subsubcategory_id')
+        <span class="text-danger"> {{$message}}</span>
+        @enderror
+        {{-- ========== sub Category select ========= --}}
+    </div>
+    {{-- col-12 --}}
+    {{-- <div class="col-12">
+    <div class="catOptionCol">
+    <div class="form-check form-check-inline">
+    <input class="form-check-input" type="radio" name="subsubcategory_id" id="inlineRadio1" value="">
+    <label class="form-check-label" for="inlineRadio1">Car Parts & Spares</label>
+    </div>
+    </div>
+    </div> --}}
+    {{-- col-12 --}}
+                </div>
     </div>
     <div class="col-lg-6">
         <label for="postcodeFld" class="form-label">Postcode</label>
@@ -216,14 +226,16 @@ $get_logo = DB::table('sitelogos')->first();
     $(document).ready(function () {
         $('select[name="category_id"]').on('change', function () {
             var category_id = $(this).val();
-            console.log(category_id);
+            // console.log(category_id);
             if (category_id) {
                 $.ajax({
                     url: "{{  url('/ajax') }}/" + category_id,
                     type: "GET",
                     dataType: "json",
                     success: function (data) {
-                        $('select[name="sub_category_id"]').html('')
+                        
+                    
+                        $('select[name="subsubcategory_id"]').html('')
                         var d = $('select[name="sub_category_id"]').empty();
                         $.each(data, function (key, value) {
                             $('select[name="sub_category_id"]').append(
@@ -235,6 +247,29 @@ $get_logo = DB::table('sitelogos')->first();
                 alert('danger');
             }
         });
+        // ik or help 
+    // ======================= ========================  
+        $('select[name="sub_category_id"]').on('change', function(){
+            var subcategory_id = $(this).val();
+            if(subcategory_id) {
+            	console.log(subcategory_id);
+                $.ajax({
+                    url: "{{  url('/sub-subcat/ajax') }}/"+subcategory_id,
+                    type:"GET",
+                    dataType:"json",
+                    success:function(data) {
+                        var d = $('select[name="subsubcategory_id"]').empty();
+                          $.each(data, function(key, value){
+                              $('select[name="subsubcategory_id"]').append('</option><option value="'+ value.id +'">' + value.sub_subcategory_name + '</option>');
+   
+                          });
+                    },
+                });
+            } else {
+                alert('danger');
+            }
+        });
+    // ======================= =========================  
     });
 
 </script>

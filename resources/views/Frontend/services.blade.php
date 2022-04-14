@@ -114,7 +114,7 @@
                   <div class="listImgCol">
                     <img src="{{asset($values->main_image)}}" alt="..." class="listImg">
                 
-                    <span class="pNumberCol"> {{count($post_data_multi_img )}}</span>
+                    <span class="pNumberCol"> {{count($values->post_images )}}</span>
                 
                   </div>
                 </div>
@@ -122,8 +122,8 @@
                   <div class="propertyContentCol">
                     <div class="propContentTopCol">
                       <h4>{{	$values->post_title}}</h4>
-                      <p>{{	$values->you_are}}</p>
-                      <span class="propPriceCol">${{	$values->expected_price}}</span>
+                      <p>{{	$values->you_are}} <span>|| Posted at:  {{Carbon\Carbon::parse(	$values->create_date)->diffForHumans()}}</span></p>
+                      <span class="propPriceCol">${{	number_format($values->expected_price)}}</span>
                       <p class="lineClamp2">
                       
                       {{Str::limit(	$values->post_detail,250,$end='....')}}

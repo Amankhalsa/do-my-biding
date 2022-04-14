@@ -10,15 +10,19 @@
         <div class="container position-relative">
           <div class="bannerContent">
 
-          <p>Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.</p>
-
+            @if(session('status'))
+          <h2>{{session('status')}}</h2>
+          @else 
+          <h2 class="text-white">{{session('email')}}</h2>
+          @endif
+          @error('email')
+          <h2 class="text-white"> {{$message}}</h2>
+          @enderror
           </div>
         </div>
       </div>
     </section>
-
-
-            <!-- Email Address -->
+<!-- Email Address -->
 
 
 <!-- section 1 -->
@@ -27,11 +31,13 @@
         <div class="container">
           <div class="loginContent">
             <div class="row g-0">
-           
+          
               <div class="col-lg-auto">
                 <div class="loginColMain" style="width:800px;">
 
                   <div class="loginCol">
+                   
+ 
                     <h4 class="modalTitle pb-3">Forgot password:</h4>
                     <form method="POST" action="{{ route('password.email') }}">
                                    @csrf
@@ -41,6 +47,7 @@
                           <div class="iconFldCol2">
                             <label for="email" class="fldIcon2"><img src="{{asset('frontend/images/email-icon.png')}}" alt="..."></label>
                             <input id="email" type="email" name="email"  class="form-control"  required autofocus placeholder="Enter Registerd email ">
+                          
                         </div>
                         </div>
               

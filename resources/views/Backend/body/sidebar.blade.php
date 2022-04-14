@@ -177,15 +177,15 @@
               <span class="navText">Jobs</span>
             </a>
           </li>
-          <li class="navItem">
+          {{-- <li class="navItem">
             <a href="javascript:void(0)" class="navLink">
               <span class="navIcon">
                 <img src="{{asset('frontend/images/nav-icon-17.png')}}" alt="...">
               </span>
               <span class="navText">Auctions</span>
             </a>
-          </li>
-          <li class="navItem sMenuLink">
+          </li> --}}
+          {{-- <li class="navItem sMenuLink">
             <a href="javascript:void(0)" class="navLink">
               <span class="navIcon">
                 <img src="{{asset('frontend/images/nav-icon-18.png')}}" alt="...">
@@ -198,7 +198,8 @@
                 <li><a href="javascript:void(0)" class="subMenuLink">Option 2</a></li>
               </ul>
             </div>
-          </li>
+          </li> --}}
+          
           <li class="navItem">
             <a href="javascript:void(0)" class="navLink">
               <span class="navIcon">

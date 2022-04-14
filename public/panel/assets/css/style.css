@@ -6,8 +6,7 @@
 a,a:hover {
   text-decoration:none;
 }
-html,
-body {
+html, body {
   color:#545454;
   line-height:26px;
   font-weight: 400;
@@ -851,7 +850,9 @@ footer .developby a:hover{
   position: absolute;
   top:50%;
   left:10px;
-  float-right;
+  float:right;
+  /* before wrong  */
+
   transform: translatey(-50%);
   color:#000;
   opacity: .5;
@@ -860,7 +861,8 @@ footer .developby a:hover{
   position: absolute;
   top:50%;
   right:10px;
-  float-right;
+  float:right;
+  /* before wrong  */
   transform: translatey(-50%);
   color:#000;
   opacity: .5;

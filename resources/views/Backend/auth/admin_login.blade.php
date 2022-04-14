@@ -8,7 +8,7 @@
           <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="{{route('home.page')}}">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Login</li>
+              <li class="breadcrumb-item active" aria-current="page">Admin Login</li>
             </ol>
           </nav>
         </div>
@@ -29,13 +29,13 @@
               <div class="col-lg-auto">
                 <div class="loginColMain">
                   <div class="loginCol">
-                    <h4 class="modalTitle pb-3">Login</h4>
+                    <h4 class="modalTitle pb-3">Admin Login</h4>
                     @if(Session::has('error'))
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>{{Session::get('error')}}</strong>.
-  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-@endif
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>{{Session::get('error')}}</strong>.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
             
                             <form action="{{route('admin.login')}}"  class="formStyle" method="post">
                                 @csrf

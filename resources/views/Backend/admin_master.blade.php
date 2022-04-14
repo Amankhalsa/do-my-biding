@@ -75,7 +75,6 @@ $(function(){
   $(document).on('click','#delete',function(e){
     e.preventDefault();
     var link = $(this).attr("href");
-
 Swal.fire({
   title: 'Are you sure?',
   text: "Delete This Data!",
@@ -94,12 +93,8 @@ Swal.fire({
     )
   }
 })
-
-
   });
 });
-
-
 </script>
  <!-- Toaster Javascript cdn -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -113,15 +108,12 @@ Swal.fire({
     case 'info':
     toastr.info(" {{ Session::get('message') }} ");
     break;
-
     case 'success':
     toastr.success(" {{ Session::get('message') }} ");
     break;
-
     case 'warning':
     toastr.warning(" {{ Session::get('message') }} ");
     break;
-
     case 'error':
     toastr.error(" {{ Session::get('message') }} ");
     break; 

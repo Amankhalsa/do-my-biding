@@ -14,6 +14,7 @@ use Carbon\Carbon;
 use Redirect,Response;
 use Image;
 use Auth;
+use Mail;
 
 class PostController extends Controller
 {
@@ -25,68 +26,41 @@ class PostController extends Controller
 // ==================== add post ====================
     public function frontend_addpost(){
         return view('frontend.post.index');
-    }
-// ==================== Start Testing function ====================
-    // public function store_frontend_post(Request $request ){
-    //     $data = new Testing();
-//================= if check box checked then 1 else 0 =================
-    //   if ($request->number == 1 ) {
-    //      $data->number = 1;  
-    //        $data->save();
-    //           $notification = array(
-    //             'message' => 'Your post status is  active ',
-    //          'alert-type' => 'success'
-    //             );
-    //         return redirect()->route('home.page')->with($notification);
-    //         }
-    //   else{
-    //       $data->number = 0; 
-    //         $data->save();
-    //           $notification = array(
-    //             'message' => 'Your post  status is inactive ',
-    //          'alert-type' => 'error'
-    //             );
-    //         return redirect()->route('home.page')->with($notification); 
-    //         }
-//================= if check box checked then 1 else 0 =================
-
-        
-    // }
-
-    
+    }   
     //=================  ajax ================= 
-
- 
-
         // ajax 
         public function Get_Sub_Category($category_id)
         {
            $subcat = SubCategory::where('category_id',$category_id)->orderBy('subcategory_name','ASC')->get();
-        
            return json_encode($subcat);
         }
+        // for sub sub 
+    //  ajax for sub sub category append in post page 
+    public function Get_Sub_subCategory($subcategory_id){
+        $subsubcat = SubSubCategory::where('subcategory_id',$subcategory_id)->orderBy('sub_subcategory_name','ASC')->get();
+            return json_encode($subsubcat);
+            }
     // ======================================= End  Testing function ==============================
     // store ADD post method     
         public function store_frontend_post(Request $request){
-
             // validation 
                 $request->validate([
             'post_title' =>'required|string|max:255',
             'category_id'=>'required',
             'sub_category_id'=>'required',
+            'subsubcategory_id'=>'required',
             'postcode' =>'required',
             'post_detail' =>'required',
-            'expected_price' =>'required',
+            'expected_price' =>'required|numeric',
             'postcode' =>'required',
-            'phone' =>'required',
-            'agree' =>'required',
-
-           
+            'phone' =>'required|numeric',
+            'agree' =>'required', 
             'main_image' =>'required|image|mimes:jpg,png,jpeg,svg,webp|max:4096',
         ],[
             'post_title.required' => 'Please enter small  post title',
             'category_id.required' => 'Please select any category',
             'sub_category_id.required' => 'Please select any Sub category ',
+            'subsubcategory_id.required' => 'Please select any Sub Sub category ',
             'postcode.required' => 'Please enter your post code address',
             'post_detail.required' => 'Please enter your post Description ',
             'phone.required' => 'Please enter your Mobile/Phone number',
@@ -131,7 +105,6 @@ class PostController extends Controller
                     Image::make($value)->save('upload/user_add_images/multi/'.$make_name);
                     // ->resize(917,1000)
                     $uploadpath = 'upload/user_add_images/multi/'.$make_name;
-
                     $storemulti_img = new MultiImg();
                     $storemulti_img->post_id = $dataid ;
                     $storemulti_img->photo_name = $uploadpath ;
@@ -139,18 +112,22 @@ class PostController extends Controller
                     // dd($storemulti_img);
                     $storemulti_img->save();
                 }
-      
             }
             // for multiple images loop    
-
-           
                     $notification = array(
                         'message' => 'Your post inserted successfully',
                         'alert-type' => 'success' );
-           
                         return redirect()->route('serives.page')->with($notification);
-            
-            
+    
+        }
+        public function demomail()
+        {
+            $mailData = [
+                'title' => 'Mail from ItSolutionStuff.com',
+                'body' => 'This is for testing email using smtp.'
+            ];
+            Mail::to('your_email@gmail.com')->send(new domybidmail($mailData));
+            dd("Email is sent successfully.");
         }
     }
     

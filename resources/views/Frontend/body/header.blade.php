@@ -40,6 +40,13 @@ $get_logo = DB::table('sitelogos')->first();
                         <span class="menuText">Service Providers</span>
                       </a>
                     </li>
+                    <li>
+                      <a href="{{route('user.profile')}}" class="mLink2">
+                        <span class="menuIcon"><img src="{{asset('frontend/images/user.png')}}" alt=""></span>
+                        <span class="menuText"> Profile</span>
+                      </a>
+                    </li>
+                    
                   </ul>
                 </div>
               </div>

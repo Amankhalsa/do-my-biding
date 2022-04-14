@@ -8,7 +8,7 @@
           <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="{{route('home.page')}}">Home</a></li>
-              <li class="breadcrumb-item active" aria-current="page">Register</li>
+              <li class="breadcrumb-item active" aria-current="page">Admin Register</li>
             </ol>
           </nav>
         </div>
@@ -27,7 +27,7 @@
               <div class="col-lg-auto">
                 <div class="loginColMain">
                   <div class="loginCol">
-                    <h4 class="modalTitle pb-3">SignUp</h4>
+                    <h4 class="modalTitle pb-3">Admin SignUp</h4>
                     <!-- -----------------------------------------------------------  -->
                 
                     <form action="{{route('admin.user_create')}}" method="post">

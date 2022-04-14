@@ -44,16 +44,13 @@ class SubCategoryController extends Controller
              'alert-type' => 'success'
                 );
         return  redirect()->route('view.front.subcategory')->with($notification);
-
     }
     //========================== edit_front_subcategory ==========================
-    public function edit_front_subcategory($id){
+             public function edit_front_subcategory($id){
                 $catdata['fetch_category'] = Category::orderBy('category_name', 'ASC')->get();
                 $catdata['edit_subcat'] = SubCategory::find($id);
         return view('backend.subcategory.edit_subcategory',$catdata);
-
     }
-
     //========================== update_front_subcategory ==========================
     public function update_front_subcategory(Request $request, $id){
             $storesubcat =  SubCategory::find($id);

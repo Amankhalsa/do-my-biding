@@ -29,9 +29,16 @@ public function login(Request $request){
     $check =$request->all();
     if(Auth::guard('admin')->attempt(['email'=> $check['email'], 'password'=>$check['password']])){
 
-        return redirect()->route('admin.dashboard')->with('error', 'Admin Login successfully');
+        $notification = array(
+            'message' => 'Admin Login successfully',
+            'alert-type' => 'success' );
+        return redirect()->route('admin.dashboard')->with($notification);
     }else{
-        return back()->with('error', 'Invalid password');
+        
+        $notification = array(
+            'message' => 'Invalid password',
+            'alert-type' => 'error' );
+        return back()->with($notification);
     }
 }
 // ========================================================================================
@@ -44,7 +51,10 @@ public function login(Request $request){
     public function admin_logout(){
 
         Auth::guard('admin')->logout();
-        return redirect()->route('login_form')->with('error', 'Admin Logout successfully');
+        $notification = array(
+            'message' => 'Admin Logout successfully',
+            'alert-type' => 'info' );
+        return redirect()->route('login_form')->with($notification );
 
     }
 // ##############################  admin register page view  ##############################
@@ -71,7 +81,10 @@ public function login(Request $request){
     $data['created_at']=  Carbon::now();
 
     Admin::insert($data);
-        return redirect()->route('login_form')->with('error', 'Admin Created successfully');
+    $notification = array(
+        'message' => 'Admin Created successfully',
+        'alert-type' => 'success' );
+        return redirect()->route('login_form')->with($notification);
 
 }
 

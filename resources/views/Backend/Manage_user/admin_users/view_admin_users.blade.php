@@ -17,7 +17,7 @@
                 <div class="card shadow">
                     <div class="card-header py-3">
                         
-                        <p class="text-primary m-0 font-weight-bold"><a href="{{route('admin.register')}}" class="btn btn-success">Add user </a> </p>
+                        <p class="text-primary m-0 font-weight-bold"><a href="{{route('admin.register')}}" class="btn btn-success">Add Admin user </a> </p>
                        
                     </div>
                     <div class="card-body">

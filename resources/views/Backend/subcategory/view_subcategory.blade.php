@@ -22,7 +22,7 @@
                     <div class="card-body">
 
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                            <table id="example" class="table table-striped table-bordered table-hover" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>S.No</th>
@@ -32,32 +32,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                             @foreach($get_subcategory as $key =>$value)
-                                    <tr>
-<td class="text-center">
- {{$key+1}}</td>
-
-<td>  {{ucwords($value['categoryname']['category_name'])}}  </td>
+@foreach($get_subcategory as $key =>$value)
+ <tr>
+<td class="text-center">{{$key+1}}</td>
+<td>  {{ucwords($value['categoryname']['category_name'])}}</td>
 <td >{{ucwords($value->subcategory_name) }} </td>
 
-
 <td>
-
 <!-- edit -->
 <button class="btn btn-light" style="margin-left: 5px;" type="submit">
-<a href="{{route('edit.front.subcategory',$value->id)}}">
-    <i class="fa fa-pencil-alt" style="font-size: 15px;"></i>
-</a>
+<a href="{{route('edit.front.subcategory',$value->id)}}"><i class="fa fa-pencil-alt" style="font-size: 15px;"></i></a>
 </button>
 <!-- delete -->
 <button class="btn btn-light" style="margin-left: 5px;" type="submit">
-<a href="{{route('delete.front.subcategory',$value->id)}}" id="delete">
-    <i class="fa fa-trash" style="font-size: 15px;"></i> 
-</a>
+<a href="{{route('delete.front.subcategory',$value->id)}}" id="delete"><i class="fa fa-trash" style="font-size: 15px;"></i></a>
 </button>
-
 </td>
-                                    </tr>   
+</tr>   
                   @endforeach
                                 </tbody>
                             

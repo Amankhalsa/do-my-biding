@@ -32,6 +32,7 @@
                                         <th>Add id</th>
                                         <th>You are</th>
                                         <th>Created at</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -40,26 +41,36 @@
                                     <tr>
                                         {{-- <td><img class="rounded-circle mr-2" width="30" height="30" src="{{asset($value->profile_photo_path)}}">{{$value->name}}</td> --}}
                                         <td><img class="rounded-circle mr-2" width="30" height="30" src="{{asset($value['userdetail']['profile_photo_path'])}}">
-                
                                        {{$value['userdetail']['name']}}</td>
                                         <td>{{Str::limit($value->post_title,20,$end='....')}}</td>
-                                        
                                         <td> {{$value->add_id}}  </td>
                                         <td> {{$value->you_are}}  </td>
-
-                                        
                                         <td>{{Carbon\Carbon::parse($value->created_at)->diffForHumans()}}</td>
                                         <td>
-                @if($value->status ==1 )
-                <button class="btn btn-light" style="margin-left: 5px;" type="submit" title="Active">
-                <a href="">    <i class=" fa fa-eye" style='font-size:20px;color:rgb(3, 99, 24)'> </i></a>
-                </button>
-                @endif
-                @if($value->status == 0 )
-                <button class="btn btn-light" style="margin-left: 5px;" type="submit"  title="Inactive">
-                    <a href="">    <i class=" fa fa-eye-slash" style='font-size:20px;color:red'> </i></a>
-                    </button>
-                    @endif
+                                            @if($value->status == 1)
+
+                                            <span class="badge badge-pill badge-success">Approved</span>
+                                        @else
+                                            <span class="badge badge-pill badge-danger">Unapproved</span>
+                    
+                                        @endif
+
+                                        </td>
+                                        <td>
+                                    @if($value->status ==1 )
+                                    <button class="btn btn-light" style="margin-left: 5px;" type="submit" title="Active/Approved">
+                                        <a href="{{route('inactive.front.bidpost',$value->id)}}">
+                                        <i class=" fa fa-eye" style='font-size:20px;color:rgb(3, 99, 24)'> </i>
+                                        </a>
+                                    </button>
+                                    @endif
+                                    @if($value->status == 0 )
+                                    <button class="btn btn-light" style="margin-left: 5px;" type="submit"  title="Inactive/Unapproved">
+                                        <a href="{{route('active.front.bidpost',$value->id)}}">
+                                           <i class=" fa fa-eye-slash" style='font-size:20px;color:red'> </i>
+                                        </a>
+                                        </button>
+                                        @endif
                               
                                             <button class="btn btn-light" style="margin-left: 5px;" type="submit" title="Edit">
                                         <a href="{{route('front.bid.edit',$value->id)}}">

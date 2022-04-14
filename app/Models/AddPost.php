@@ -13,6 +13,13 @@ class AddPost extends Model
     public function userdetail(){
         return $this->belongsTo(User::class,'user_account_id' ,'id');
       }
+
+
+
+      public function post_images(){
+          return $this->hasMany(MultiImg::class, 'post_id', 'id');
+      }
+    
 }
 
 

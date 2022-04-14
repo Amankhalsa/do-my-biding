@@ -30,6 +30,12 @@
                 <div class="loginColMain">
                   <div class="loginCol">
                     <h4 class="modalTitle pb-3">Login</h4>
+                    @if(Session::has('error'))
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>{{Session::get('errors')}}</strong>.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    @endif
                     <form method="POST" action="{{ route('login') }}" class="formStyle">
                              @csrf
                       <div class="row gx-0 gy-3">
@@ -38,12 +44,18 @@
                           <div class="iconFldCol2">
                             <label for="email" class="fldIcon2"><img src="{{asset('frontend/images/email-icon.png')}}" alt="..."></label>
                             <input id="email" type="email" name="email"  class="form-control"  required autofocus>
+                            @error('email')
+                            <span class="text-white"> {{$message}}</span>
+                            @enderror
                           </div>
                         </div>
                         <div class="col-12">
                           <div class="iconFldCol2">
                             <label for="password" class="fldIcon2"><img src="{{asset('frontend/images/lock-icon.png')}}" alt="..."></label>
                             <input id="password"   type="password"  name="password" autocomplete="current-password"class="form-control" required>
+                            @error('password')
+                            <span class="text-white"> {{$message}}</span>
+                            @enderror
                           </div>
                         </div>
                         <div class="col-12">

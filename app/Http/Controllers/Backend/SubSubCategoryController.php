@@ -15,7 +15,6 @@ class SubSubCategoryController extends Controller
     //
     public function view_sub_subcategory(){
         $getsubdata['getsub_subcat'] = SubSubCategory::get();
-        
         // orderBy('sub_subcategory_name	', 'ASC')
         return view('backend.sub_subcategory.view_sub_subcat',$getsubdata);
     }
@@ -23,19 +22,16 @@ class SubSubCategoryController extends Controller
     public function add_sub_subcategory(){
         $fetchcatdata['fetch_category'] = Category::orderBy('category_name', 'ASC')->get();
         $fetchcatdata['sub_subcategory'] = SubCategory::orderBy('subcategory_name', 'ASC')->get();
-        
         return view('backend.sub_subcategory.add_sub_subcat',$fetchcatdata);
 
     }
-
 // ajax 
-
      public function GetSubCategory($category_id)
      {
         $subcat = SubCategory::where('category_id',$category_id)->orderBy('subcategory_name','ASC')->get();
-     
         return json_encode($subcat);
      }
+
 
 
     // ==================================== store sub sub category data  ====================================
