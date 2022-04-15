@@ -28,10 +28,11 @@ $get_logo = DB::table('sitelogos')->first();
               <div class="row align-items-center">
                 <div class="col-md">
                   <div class="row">
+                    <form action="{{ route('frontend.add_lists') }}" method="get" >
                     <div class="col-md-4">
                       <div class="iconFldCol">
                         <label for="searchFld" class="iFldLbl"><img src="{{asset('frontend/images/search.svg')}}" alt="..."></label>
-                        <input type="text" class="inputStyle" id="searchFld" placeholder="Search keyword...">
+                        <input type="text" class="inputStyle" name="addsearch" id="searchFld" placeholder="Search keyword...">
                       </div>
                     </div>
                     <div class="col-md-4 fldBorder">
@@ -76,6 +77,7 @@ $get_logo = DB::table('sitelogos')->first();
                         </div>
                       </div>
                     </div>
+                 
                   </div>
                 </div>
                 <div class="col-md-auto">
@@ -90,6 +92,7 @@ $get_logo = DB::table('sitelogos')->first();
                     </button>
                   </div>
                 </div>
+              </form>
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 
 @extends('frontend.home_master')
-@section('title', 'Dashboard' )
+@section('title', 'Profile' )
 @section('home_content')
 <!-- section 1 -->
 @include('frontend.body.navigation')
@@ -12,7 +12,7 @@
             @include('frontend.body.message')
 
             <div class="form_content pt-5">
-                <form class="formStyle2" action="">
+           
                     <div class="postCardMain">
                         <div class="postHeader text-dark">
                             <h4>    Hi <strong>{{$user_detail->name}}</strong> Update Your Profile</h4>
@@ -40,9 +40,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="restpsd_content">
-                                    <div class="restPsd">
-                                        <h5>Reset password</h5>
+<div class="restpsd_content">
+         <div class="restPsd">
+                       <h5>Reset password</h5>
         <form method="post" action="{{route('user.password.update')}}" >
             @csrf
                                             
@@ -79,52 +79,52 @@
                          
                 
                              <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn">
+                            <button type="submit" class="btn btn-primary">
                                 Reset
                             </button>
                                 </div>
-                
+                            </form>
                                      
                                     </div>
-                                </div>
+</div>
                             </div>
                             <div class="col-lg-8 col-md-7 col-12">
                                 <div class="class_form">
-                                
-                                    <form method="post" action="">
+                                    <form method="post" action="{{route('user.data.update',$user_detail->id)}}">
+                                        @csrf
                                         <div class="form-group height_set">
                                             <label for="exampleInputEmail1">Your email address</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                            <input type="email" class="form-control" name="email" 
                                                 aria-describedby="emailHelp" value="{{$user_detail->email}}">
                                         </div>
                                         <div class="form-group height_set">
                                             <label for="exampleInputEmail1">Your username</label>
-                                            <input type="Your username" class="form-control" name="name" id="exampleInputEmail1"
+                                            <input type="Your username" class="form-control" name="name" 
                                                 aria-describedby="emailHelp" value="{{$user_detail->name}}">
                                         </div>
                                         <div class=" form-group height_set">
                                             <label for="exampleInputEmail1">Phone Number</label>
-                                            <input type="tell" class="form-control " name="phone_number" id="exampleInputEmail1"
+                                            <input type="tell" class="form-control " name="phone_number" 
                                                 aria-describedby="emailHelp" value="{{$user_detail->phone_number}}">
                                         </div>
                                         <div class="form-group height_set">
                                             <label for="exampleInputEmail1">Website URL</label>
-                                            <input type="URL" class="form-control" name="website_url" id="exampleInputEmail1"
+                                            <input type="URL" class="form-control" name="website_url" 
                                                 aria-describedby="emailHelp" value="{{$user_detail->website_url}}">
                                         </div>
                                         <div class=" form-group">
                                             <label for="exampleInputEmail1">Address</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                            <textarea class="form-control" 
                                                 rows="3" name="address">{{$user_detail->address}}</textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlTextarea1"> Information about yourself</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                            <textarea class="form-control" 
                                                 rows="3" name="about_yourself">{{$user_detail->about_yourself}}</textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlTextarea1">Activities and Interests</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                            <textarea class="form-control" 
                                                 rows="3" name="Activities_and_Interests">{{$user_detail->Activities_and_Interests}}</textarea>
                                         </div>
                                
@@ -151,7 +151,7 @@
                                                     </div>
                                             </div>
                                         <div class="form-group form-check">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                            <input type="checkbox" class="form-check-input" >
                                             <label class="form-check-label" for="exampleCheck1">
                                                 Display on your public profile
                                             </label>
@@ -159,13 +159,13 @@
                                         <div class="row mt-3">
                                             <div class="col-12">
                                                 <h6>Email Preferences</h6>
-                                                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                                                <input type="checkbox"  name="vehicle1" value="Bike">
                                                 <label for="vehicle1"> I wish to receive the Repost Notification
                                                     email</label><br>
-                                                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+                                                <input type="checkbox"  name="vehicle2" value="Car">
                                                 <label for="vehicle2"> I wish to receive newsletters from
                                                     domybiding</label><br>
-                                                <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+                                                <input type="checkbox"  name="vehicle3" value="Boat">
                                                 <label for="vehicle3"> I wish to receive special offers from selected
                                                     3rd
                                                     parties</label><br><br>

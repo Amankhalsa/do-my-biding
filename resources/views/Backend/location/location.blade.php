@@ -17,11 +17,20 @@
                 <div class="card shadow">
                     <div class="card-header py-3">
                         
-                        <p class="text-primary m-0 font-weight-bold"><a href="{{route('add.all.location')}}" class="btn btn-success" >
+                        <p class="text-primary m-0 font-weight-bold"><span><a href="{{route('admin.dashboard')}}"class="btn btn-info">Back </a></span> 
+                            <a href="{{route('add.all.location')}}" class="btn btn-success" >
 
-                        Add Location </a> </p>
+                        Add Location </a>  </p>
                        
                     </div>
+
+                 
+                        
+                        
+                       
+                    
+
+
                     <div class="card-body">
 
                         <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">

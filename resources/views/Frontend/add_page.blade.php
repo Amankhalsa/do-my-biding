@@ -42,7 +42,6 @@
                     <span class="primaryColor semiBold">${{	$get_post_data->expected_price}}</span>
                   </div>
                 </div>
-
                 <div class="swiper adsSlider swiperStyle">
                   <div class="swiper-wrapper">
                @foreach($get_data_multi_img as $value)     
@@ -60,7 +59,7 @@
                   <div class="swiper-wrapper">
                     {{-- <div class="swiper-slide">
                       <div class="sliderThumbImg">
-                        <img src="images/slider-img-1.jpg" />
+                        <img src="{{asset($get_post_data->main_image)}}" />
                       </div>
                     </div> --}}
                     @foreach($get_data_multi_img as $value) 
@@ -70,7 +69,6 @@
                       </div>
                     </div>
                     @endforeach
-                  
                   </div>
                 </div>
               </div>
@@ -162,12 +160,16 @@
                       </div>
                     </div>
                     <div class="col-lg text-end">
+                      @auth
                       <div class="adReportRight">
+                        <a href="{{route('frontend.report_on.post',$get_post_data->add_id)}}">
                         <button type="button" class="btn btnOutline" name="button">
-                          <span class="pe-3"> <img src="images/flag.png" alt=""> </span>
+                          <span class="pe-3"> <img src="{{asset('frontend/images/flag.png')}}" alt=""> </span>
                           <span>Report this add copy</span>
                         </button>
+                        </a>
                       </div>
+                      @endauth
                     </div>
                   </div>
                 </div>
@@ -209,17 +211,19 @@
                 <h5>Contact the advertiser</h5>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
                 <button type="button" class="btn btnPrimary" name="button">
-                  <span> <img src="images/email.png" alt=""> </span>
+                  <span> <img src="{{asset('frontend/images/email.png')}}" alt=""> </span>
                   <span>Send a message</span>
                 </button>
               </div>
               <div class="cardStyle3">
                 <h5>Do My Bidding Safety Centre</h5>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <a href="{{route('frontend.report_on.post',$get_post_data->add_id)}}" >
                 <button type="button" class="btn btnOutline" name="button">
-                  <span class="pe-3"> <img src="images/flag.png" alt=""> </span>
+                  <span class="pe-3"> <img src="{{asset('frontend/images/flag.png')}}" alt=""> </span>
                   <span>Report this add copy</span>
                 </button>
+              </a>
               </div>
             </div>
           </div>

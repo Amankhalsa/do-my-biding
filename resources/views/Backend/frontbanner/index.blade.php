@@ -17,7 +17,9 @@
                 <div class="card shadow">
                     <div class="card-header py-3">
                         
-                        <p class="text-primary m-0 font-weight-bold"><a href="{{route('add.front.banner')}}" class="btn btn-success">Add Banner </a> </p>
+                        <p class="text-primary m-0 font-weight-bold">
+                            <span><a href="{{route('admin.dashboard')}}"class="btn btn-info">Back </a></span>
+                            <a href="{{route('add.front.banner')}}" class="btn btn-success">Add Banner </a> </p>
                        
                     </div>
                     <div class="card-body">

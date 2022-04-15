@@ -16,7 +16,9 @@
                 <h3 class="text-dark mb-4">Manage Site/Sub Category </h3>
                 <div class="card shadow">
                     <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold"><a href="{{route('add.front.subcategory')}}" class="btn btn-success" >
+                        <p class="text-primary m-0 font-weight-bold">
+                            <span><a href="{{route('admin.dashboard')}}"class="btn btn-info">Back </a></span>
+                            <a href="{{route('add.front.subcategory')}}" class="btn btn-success" >
                         Add Sub Category </a> </p>
                     </div>
                     <div class="card-body">

@@ -11,8 +11,9 @@ use App\Http\Controllers\Backend\AddLocatController;
 use App\Http\Controllers\Frontend\PostController;
 use App\Http\Controllers\Backend\SubSubCategoryController;
 use App\Http\Controllers\Backend\BidController;
-
-
+use App\Http\Controllers\Backend\StaticPageContoller;
+use App\Http\Controllers\Frontend\ReportController;
+use App\Http\Controllers\Frontend\AddSearchController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,7 +53,6 @@ Route::post('/store-post',[PostController::class, 'store_frontend_post'])->name(
 Route::get('/ajax/{category_id}', [PostController::class, 'Get_Sub_Category']);
 //sub sub category append
 // niche wala route hai upar wala to theek hai 
-
 Route::get('/sub-subcat/ajax/{subcategory_id}', [PostController::class, 'Get_Sub_subCategory']);
 // showing add page 
 Route::get('/add-page/{id}',[HomeContoller::class, 'frontend_add'])->name('frontend.add.page');
@@ -64,8 +64,16 @@ Route::get('/email-alerts',[UserDetailController::class,'show_email_alerts'])->n
 Route::get('/profile',[UserDetailController::class,'user_profile'])->name('user.profile');
 // update password 
 Route::post('/update/password',[UserDetailController::class,'update_user_password'])->name('user.password.update');
+// user profile data update 
+
+Route::post('/update/profile/{id}',[UserDetailController::class,'update_user_profile_data'])->name('user.data.update');
 
 
+
+// Report by user on post 
+Route::get('/reported/{id}',[ReportController::class,'post_report'])->name('frontend.report_on.post');
+// searched-adds
+Route::get('/searched-adds',[AddSearchController::class,'search_adds'])->name('frontend.add_lists');
 
 //#################################### Front end controllers end   ####################################
 Route::get('/dashboard', function () {
@@ -248,6 +256,18 @@ Route::get('/delete/{id}',[AddLocatController::class, 'delete_frontview_location
 
     });
     // prefic location end 
+    // locations prefix start from here 
+Route::prefix('static-pages')->group(function(){
+    Route::controller(StaticPageContoller::class)->group(function () {
+    Route::get('/privacy-page', 'privacy')->name('backend.privacy.page');
+    // Route::get('/add','add_frontview_location')->name('add.all.location');
+    // Route::post('/store', 'store_frontview_location')->name('store.all.location');
+    // Route::get('/edit/{id}', 'edit_frontview_location')->name('edit.all.location');
+    // Route::post('/update/{id}', 'update_frontview_location')->name('update.all.location');
+    // Route::get('/delete/{id}', 'delete_frontview_location')->name('delete.all.location');      
+});
+});
+// end static pages prefix and contoller routes  
 
 #################### sub category prefix end  ####################
 });

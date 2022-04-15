@@ -14,6 +14,20 @@
             <span class="text-danger"> {{$message}}</span>
             @enderror
       </div>
+      <div class="form-group">
+        <label for="title"> Title</label>
+        <input type="text" class="form-control"   name="title"  placeholder="Title">
+              @error('title')
+              <span class="text-danger"> {{$message}}</span>
+              @enderror
+        </div>
+        <div class="form-group">
+          <label for="discription"> Discription</label>
+          <input type="text" class="form-control"  name="discription" placeholder="Discription">
+                @error('discription')
+                <span class="text-danger"> {{$message}}</span>
+                @enderror
+          </div>
   <button type="submit" class="btn btn-primary">Save</button>
 </form>
 </div>

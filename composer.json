@@ -6,11 +6,13 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "algolia/algoliasearch-client-php": "^3.2",
         "awssat/laravel-visits": "^3.0",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.7",
         "laravel/framework": "^9.2",
         "laravel/sanctum": "^2.14.1",
+        "laravel/scout": "^9.4",
         "laravel/tinker": "^2.7",
         "srmklive/paypal": "^3.0",
         "stevebauman/location": "^6.3"

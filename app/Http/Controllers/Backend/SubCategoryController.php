@@ -40,8 +40,8 @@ class SubCategoryController extends Controller
             $storesubcat->save();
         
              $notification = array(
-            'message' => 'Sub Category added successfully',
-             'alert-type' => 'success'
+                'message' => 'Sub Category added successfully',
+                'alert-type' => 'success'
                 );
         return  redirect()->route('view.front.subcategory')->with($notification);
     }
@@ -61,8 +61,8 @@ class SubCategoryController extends Controller
             $storesubcat->save();
         
             $notification = array(
-            'message' => 'Sub Category Updated successfully',
-             'alert-type' => 'info'
+                'message' => 'Sub Category Updated successfully',
+                'alert-type' => 'info'
                 );
         return  redirect()->route('view.front.subcategory')->with($notification);
 
@@ -71,8 +71,8 @@ class SubCategoryController extends Controller
     public function delete_front_subcategory($id){
             $storesubcat =  SubCategory::find($id)->delete();
             $notification = array(
-            'message' => 'Sub Category Deleted successfully',
-             'alert-type' => 'error'
+                'message' => 'Sub Category Deleted successfully',
+                'alert-type' => 'error'
                 );
         return  redirect()->route('view.front.subcategory')->with($notification);  
 

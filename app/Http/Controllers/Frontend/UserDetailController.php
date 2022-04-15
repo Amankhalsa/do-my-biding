@@ -15,6 +15,8 @@ use Image;
 use Auth;
 use Tracker;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
 class UserDetailController extends Controller
 {
     public function __construct()
@@ -29,31 +31,63 @@ public function user_profile(){
 }
 
 
-    public function update_user_password(Request $request){
+    public function update_user_password(Request $request)
+    {
         $validateData = $request->validate([
             'oldpassword' => 'required',
             'password' => 'required|confirmed',
             // 'new_confirm_password' => 'same:new_password',
         ]);
-        $hashedpassword = Auth::user()->password;
-	if (Hash::check($request->oldpassword,$hashedpassword)) {
-		$user = User::find(Auth::id());
-		$user->password = Hash::make($request->password);
-		$user->save();
-		Auth::logout();
-			  $notification = array(
-        'message' => 'Password Updated successfully',
-        'alert-type' => 'success'
-    );
-		return redirect()->route('user.logout')->with($notification);
+        $user = User::find(Auth::id());
+        $hashedpassword = $user->password;
+        // dd($user,$request->all());
+        if (Hash::check($request->oldpassword,$user->password)) {
+           
+            $user->password = Hash::make($request->password);
+            $user->save();
+            Auth::logout();
+                $notification = array(
+            'message' => 'Password Updated successfully',
+            'alert-type' => 'success'
+        );
+            return redirect()->route('login')->with($notification);
 
 
-	}else{
-     
-		return redirect()->back();
-	}
+        }else{
+        
+            return redirect()->back();
+        }
 
     }
+// ======================== Update user profile =======================================
+
+public function update_user_profile_data(Request $request, $id){
+    // dd($request->all());
+                    $data =  User::find($id);
+                    $data->name = $request->name;
+                    $data->email =$request->email;
+                    $data->phone_number =$request->phone_number;
+                    $data->gender =$request->gender;
+                    $data->dob =date('Y-m-d', strtotime($request->dob));   
+                    $data->postcode =$request->postcode;
+                    $data->website_url =$request->website_url;
+
+                    $data->about_yourself =$request->about_yourself;
+                    $data->address =$request->address;
+                    $data->Activities_and_Interests =$request->Activities_and_Interests;
+              
+                    $data->save();
+                    $notification = array(
+                    'message' => 'Profile Updated successfully',
+                    'alert-type' => 'success'
+                    );
+                    return  redirect()->back()->with($notification);
+
+}
+
+
+// ======================== Update user profile =======================================
+
     // ========================
     public function show_classifieds(){
 

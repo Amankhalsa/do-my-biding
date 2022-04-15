@@ -25,7 +25,7 @@ class HomeContoller extends Controller
     }
     // brows a services 
     public function frontend_services(){
-            $getpost['post_data_single_img'] =  AddPost::where('status', '=', 1)->latest()->get();
+            $getpost['post_data_single_img'] =  AddPost::where('status', '=', 1)->latest()->paginate(10);
        //niche ali multi  post_images
             $getpost['post_data_multi_img'] =  MultiImg::where('post_id')->get();
         return view('frontend.services',$getpost);

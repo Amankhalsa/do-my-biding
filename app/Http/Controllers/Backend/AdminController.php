@@ -199,15 +199,7 @@ public function login(Request $request){
                     );
             return  redirect()->route('add.admin_user')->with($notification);
     }
-
-
-
-
-
-
-
-
-
+    
 //########################## admin can mange site users here  ######################
 //================== View all site users ==================
  public function  add_user(){

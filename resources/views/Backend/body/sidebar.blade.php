@@ -91,6 +91,22 @@
             </div>
           </li>
         <!-- ============== Categories ================ -->
+        {{-- ==================== static pages ===================== --}}
+<li class="navItem sMenuLink">
+  <a href="javascript:void(0)" class="navLink">
+    <span class="navIcon">
+      <img src="{{asset('frontend/images/nav-icon-11.png')}}" alt="...">
+    </span>
+    <span class="navText">Manage Static Pages</span>
+  </a>
+  <div class="submenuColMain">
+    <ul class="subMenuCol">
+      <li><a href="{{route('backend.privacy.page')}}" class="subMenuLink">Privacy 1</a></li>
+      <li><a href="javascript:void(0)" class="subMenuLink">Option 2</a></li>
+    </ul>
+  </div>
+</li>
+{{--===================== static pages ====================== --}}
           <li class="navItem">
             <a href="javascript:void(0)" class="navLink">
               <span class="navIcon">
@@ -177,28 +193,7 @@
               <span class="navText">Jobs</span>
             </a>
           </li>
-          {{-- <li class="navItem">
-            <a href="javascript:void(0)" class="navLink">
-              <span class="navIcon">
-                <img src="{{asset('frontend/images/nav-icon-17.png')}}" alt="...">
-              </span>
-              <span class="navText">Auctions</span>
-            </a>
-          </li> --}}
-          {{-- <li class="navItem sMenuLink">
-            <a href="javascript:void(0)" class="navLink">
-              <span class="navIcon">
-                <img src="{{asset('frontend/images/nav-icon-18.png')}}" alt="...">
-              </span>
-              <span class="navText">MarketPlace</span>
-            </a>
-            <div class="submenuColMain">
-              <ul class="subMenuCol">
-                <li><a href="javascript:void(0)" class="subMenuLink">Option 1</a></li>
-                <li><a href="javascript:void(0)" class="subMenuLink">Option 2</a></li>
-              </ul>
-            </div>
-          </li> --}}
+ 
           
           <li class="navItem">
             <a href="javascript:void(0)" class="navLink">
@@ -216,14 +211,8 @@
               <span class="navText">Dispute Faqs</span>
             </a>
           </li>
-          <li class="navItem">
-            <a href="javascript:void(0)" class="navLink">
-              <span class="navIcon">
-                <img src="{{asset('frontend/images/nav-icon-21.png')}}" alt="...">
-              </span>
-              <span class="navText">Manage Static Pages</span>
-            </a>
-          </li>
+
+
           <li class="navItem">
             <a href="javascript:void(0)" class="navLink">
               <span class="navIcon">

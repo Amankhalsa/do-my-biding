@@ -17,7 +17,8 @@
                 <div class="card shadow">
                     <div class="card-header py-3">
                         
-                        <p class="text-primary m-0 font-weight-bold"><a href="{{route('admin.register')}}" class="btn btn-success">Add Admin user </a> </p>
+                        <p class="text-primary m-0 font-weight-bold"><span><a href="{{route('admin.dashboard')}}"class="btn btn-info">Back </a></span>
+                            <a href="{{route('admin.register')}}" class="btn btn-success">Add Admin user </a> </p>
                        
                     </div>
                     <div class="card-body">
@@ -26,7 +27,7 @@
                             <table id="example" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
+                                        <th > Name</th>
                                         <th>Email</th>
                                         <th>Type</th>
                                         <th>DOB</th>

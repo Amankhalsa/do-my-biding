@@ -15,6 +15,23 @@
             <span class="text-danger"> {{$message}}</span>
             @enderror
       </div>
+
+      <div class="form-group">
+            <label for="title">Change Title</label>
+            <input type="text" class="form-control"  name="title" value="{{$edit_banner->title}}"  placeholder="Title">
+                  @error('title')
+                  <span class="text-danger"> {{$message}}</span>
+                  @enderror
+            </div>
+            <div class="form-group">
+              <label for="discription">Change Discription</label>
+              <input type="text" class="form-control"   name="discription" value="{{$edit_banner->discription}}"  placeholder="Discription">
+                    @error('discription')
+                    <span class="text-danger"> {{$message}}</span>
+                    @enderror
+              </div>
+
+
       <button type="submit" class="btn btn-primary">Update</button>
 </form>
    <div class="form-group pt-5">
