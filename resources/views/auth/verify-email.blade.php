@@ -1,39 +1,59 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('frontend.home_master')
+@section('title', 'Verify-email' )
+@section('home_content')
 
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
-        </div>
-
+<!-- section 1 -->
+<section>
+      <div class="bannerColMain">
+        <div class="container position-relative">
+          <div class="bannerContent">
+            <div class="mb-4 text-sm text-gray-600">
+                {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+            </div>
         @if (session('status') == 'verification-link-sent')
             <div class="mb-4 font-medium text-sm text-green-600">
-                {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+                <h2>  {{ __('A new verification link has been sent to the email address you provided during registration.') }} </h2>
             </div>
         @endif
-
-        <div class="mt-4 flex items-center justify-between">
-            <form method="POST" action="{{ route('verification.send') }}">
-                @csrf
-
-                <div>
-                    <x-button>
-                        {{ __('Resend Verification Email') }}
-                    </x-button>
-                </div>
-            </form>
-
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-
-                <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    {{ __('Log Out') }}
-                </button>
-            </form>
+          @error('email')
+          <h2 class="text-white"> {{$message}}</h2>
+          @enderror
+          </div>
         </div>
-    </x-auth-card>
-</x-guest-layout>
+      </div>
+</section>
+<!-- Email Address -->
+
+
+<!-- section 1 -->
+<section>
+      <div class="pageContent">
+        <div class="container">
+          <div class="loginContent">
+            <div class="row g-0">
+              <div class="col-lg-auto">
+                <div class="loginColMain" style="width:800px;">
+                  <div class="loginCol">
+                    <h4 class="modalTitle-- pb-3">Verify your email address:</h4>
+                <form method="POST" action="{{ route('verification.send') }}">
+                @csrf
+                      <div class="row gx-0 gy-3">
+                        <div class="col-md-12">
+                          <div class="iconFldCol2">             
+                        </div>
+                        </div>
+                        <div class="col-12">
+                          <button class="btn gradientBtn w-100">RESEND VERIFICATION EMAIL</button>
+                        </div>
+                      </div>
+                    </form>              
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end login section  -->
+@endsection

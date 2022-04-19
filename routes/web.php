@@ -14,6 +14,8 @@ use App\Http\Controllers\Backend\BidController;
 use App\Http\Controllers\Backend\StaticPageContoller;
 use App\Http\Controllers\Frontend\ReportController;
 use App\Http\Controllers\Frontend\AddSearchController;
+use App\Http\Controllers\Frontend\ClasifiedController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,9 +27,16 @@ use App\Http\Controllers\Frontend\AddSearchController;
 |
 */
 
+
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
 // Route::get('/', function () {
 //     return view('frontend.index');
 // })->name('home.page');
+
+Route::get('send-email', [HomeContoller::class, 'sendmail']);
 
 Route::get('/config-clear', function() {
     Artisan::call('config:cache');
@@ -68,6 +77,24 @@ Route::post('/update/password',[UserDetailController::class,'update_user_passwor
 
 Route::post('/update/profile/{id}',[UserDetailController::class,'update_user_profile_data'])->name('user.data.update');
 
+//update profile photo 
+Route::post('/update/photo/{id}',[UserDetailController::class,'update_user_picture'])->name('update.profile.photo');
+
+// ================================= clasified add =======================
+Route::prefix('clasified')->group(function(){
+    // view user posted add 
+    Route::get('/view/{id}',[ClasifiedController::class,'view_clasified_add'])->name('View.clasified.add');
+    //edit clasified
+    Route::get('/edit/{id}',[ClasifiedController::class,'edit_clasified_add'])->name('edit.clasified.add');
+    // update clasified add 
+    Route::post('/update/{id}',[ClasifiedController::class,'update_clasified_add'])->name('update.clasified.add');
+   //delete
+    Route::get('/delete/{id}',[ClasifiedController::class,'delete_clasified_add'])->name('delete.clasified.add');
+
+    
+
+});
+
 
 
 // Report by user on post 
@@ -75,11 +102,13 @@ Route::get('/reported/{id}',[ReportController::class,'post_report'])->name('fron
 // searched-adds
 Route::get('/searched-adds',[AddSearchController::class,'search_adds'])->name('frontend.add_lists');
 
+
+
 //#################################### Front end controllers end   ####################################
 Route::get('/dashboard', function () {
     // return view('dashboard');
     return redirect()->route('user.profile');
-})->middleware(['auth'])->name('dashboard');
+})->middleware(['auth','verified'])->name('dashboard');
 require __DIR__.'/auth.php';
 // ================================================ Admin prefix start  ================================================
 Route::prefix('admin')->group(function(){
@@ -266,6 +295,12 @@ Route::prefix('static-pages')->group(function(){
     // Route::post('/update/{id}', 'update_frontview_location')->name('update.all.location');
     // Route::get('/delete/{id}', 'delete_frontview_location')->name('delete.all.location');      
 });
+// email prefix start 
+
+
+
+  
+// mail prefix end 
 });
 // end static pages prefix and contoller routes  
 

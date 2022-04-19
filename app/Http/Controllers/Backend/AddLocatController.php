@@ -25,13 +25,11 @@ class AddLocatController extends Controller
                 $request->validate([
             'name' =>'required',
             ]);
-
             $storelocat =  new Location();
             $storelocat->name = $request->name;
             $storelocat->slug_name = strtolower(str_replace(' ', '-',$request->name));
             $storelocat->created_at = Carbon::now();
             $storelocat->save();
-
               $notification = array(
                 'message' => 'Location added  successfully',
                 'alert-type' => 'success'

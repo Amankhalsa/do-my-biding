@@ -28,22 +28,22 @@ class PostController extends Controller
         return view('frontend.post.index');
     }   
     //=================  ajax ================= 
-        // ajax 
+        //============== ajax ==============
         public function Get_Sub_Category($category_id)
         {
            $subcat = SubCategory::where('category_id',$category_id)->orderBy('subcategory_name','ASC')->get();
            return json_encode($subcat);
         }
-        // for sub sub 
-    //  ajax for sub sub category append in post page 
+    //============== for sub sub ==============
+    //==============  ajax for sub sub category append in post page ==============
     public function Get_Sub_subCategory($subcategory_id){
         $subsubcat = SubSubCategory::where('subcategory_id',$subcategory_id)->orderBy('sub_subcategory_name','ASC')->get();
             return json_encode($subsubcat);
             }
     // ======================================= End  Testing function ==============================
-    // store ADD post method     
+    //============== store ADD post method ==============   
         public function store_frontend_post(Request $request){
-            // validation 
+        //============== validation ==============
                 $request->validate([
             'post_title' =>'required|string|max:255',
             'category_id'=>'required',
@@ -69,7 +69,7 @@ class PostController extends Controller
             'agree.required' => 'Please Accept Terms and Conditions, Posting Guidelines and accept the Privacy Policy. ',
             
         ]);
-            // validation 
+        //============== validation ==============
 
 
             if ($request->file('main_image')) {
@@ -79,7 +79,6 @@ class PostController extends Controller
                 // ->resize(694,470) FOR RESIZE IMAGE 
                 $save_url = 'upload/user_add_images/main/'.$name_gen;
                 // dd($save_url);
-
             }
             $storeadddata = new AddPost();   
             $storeadddata->user_account_id =Auth::user()->id;
@@ -92,12 +91,12 @@ class PostController extends Controller
             $storeadddata->expected_price = $request->expected_price;
             $storeadddata->main_image = $save_url;
             $storeadddata->you_are =  Auth::user()->you_are;
-            $storeadddata->create_date =  Carbon::now();
+            $storeadddata->create_date =  Carbon::now()->addDays(7);
             $storeadddata->phone =  $request->phone;
             $storeadddata->add_id = rand(000000,999999);
             $storeadddata->save();
             $dataid = $storeadddata->id;
-            // for multiple images  loop        
+            //============== for multiple images  loop ==============       
             if ($request->file('photo_name')) {
                 $images = $request->file('photo_name');
                 foreach ($images as  $value) {
@@ -113,21 +112,12 @@ class PostController extends Controller
                     $storemulti_img->save();
                 }
             }
-            // for multiple images loop    
-                    $notification = array(
-                        'message' => 'Your post inserted successfully',
-                        'alert-type' => 'success' );
+            //============== for multiple images loop ==============   
+                    $notification = array('message' => 'Your post inserted successfully', 
+                    'alert-type' => 'success' );
                         return redirect()->route('serives.page')->with($notification);
     
         }
-        public function demomail()
-        {
-            $mailData = [
-                'title' => 'Mail from ItSolutionStuff.com',
-                'body' => 'This is for testing email using smtp.'
-            ];
-            Mail::to('your_email@gmail.com')->send(new domybidmail($mailData));
-            dd("Email is sent successfully.");
-        }
+  
     }
     

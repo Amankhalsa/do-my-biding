@@ -13,7 +13,11 @@
 <div class="container rounded bg-white mb-5">
     <div class="row">
         <div class="col-md-2 border-right">
-            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="{{(!empty($get_admin_users->profile_photo_path)) ? asset($get_admin_users->profile_photo_path):url('upload/no_image.jpg')}}" id="output"><span class="font-weight-bold">{{$get_admin_users->name}}</span><span class="text-black-50">{{$get_admin_users->email}}</span><span> </span></div>
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                <img class="rounded-circle mt-5" width="150px" src="{{(!empty($get_admin_users->profile_photo_path)) 
+                ? asset($get_admin_users->profile_photo_path):url('upload/no_image.jpg')}}" id="output">
+                <span class="font-weight-bold">{{$get_admin_users->name}}</span>
+                <span class="text-black-50">{{$get_admin_users->email}}</span></div>
         </div>
         <div class="col-md-6 border-right">
               <form action="{{route('update.admin_user',$get_admin_users->id)}}" method="post" enctype="multipart/form-data">

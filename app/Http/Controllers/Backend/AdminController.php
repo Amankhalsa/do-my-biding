@@ -70,6 +70,7 @@ public function login(Request $request){
  }
 // ##############################  admin User create by register  ##############################
 
+
     public function admin_user_create(Request $request){
 // dd($request->all());
     $data =array();

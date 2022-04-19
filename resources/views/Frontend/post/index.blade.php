@@ -4,6 +4,7 @@ $getlocation = DB::table('locations')->orderBy('name')->get();
 $front_banner = DB::table('front_banners')->first();
 $get_logo = DB::table('sitelogos')->first();
 @endphp
+
 @extends('frontend.home_master')
 @section('title', 'Add post' )
 @section('home_content')
@@ -247,7 +248,7 @@ $get_logo = DB::table('sitelogos')->first();
                 alert('danger');
             }
         });
-        // ik or help 
+     
     // ======================= ========================  
         $('select[name="sub_category_id"]').on('change', function(){
             var subcategory_id = $(this).val();

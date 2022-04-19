@@ -1,7 +1,5 @@
-
-
 @extends('frontend.home_master')
-@section('title', 'Home' )
+@section('title', 'Forgot password' )
 @section('home_content')
 
 <!-- section 1 -->

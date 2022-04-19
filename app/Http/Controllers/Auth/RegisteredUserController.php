@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -10,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
-
+use App\Notifications\WelcomeEmailNotification;
 class RegisteredUserController extends Controller
 {
     /**
@@ -28,7 +27,6 @@ class RegisteredUserController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
-
      * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request)
@@ -39,19 +37,21 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
 
         ]);
-
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'type' => 'user',
-
             'password' => Hash::make($request->password),
         ]);
 
+        $user->notify(new WelcomeEmailNotification($user));
         event(new Registered($user));
-
         Auth::login($user);
-
         return redirect(RouteServiceProvider::HOME);
+
+       
+            
+  
+ 
     }
 }

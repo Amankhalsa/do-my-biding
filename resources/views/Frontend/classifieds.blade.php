@@ -63,45 +63,54 @@
                                 </tr>
                             </thead>
                             <tbody>
-                      
-                                <tr>
-                                    <td> 1</td>
-                                    <td> <img class=" mr-2" width="100" height="80" src=""> Detail</td>
-                                    <td>{{$user->name}}</td>
-                                    <td></td>
-                                    <td>        <ul>
-                                      <a href=""> <li> VIP Carousel <i class="fa-solid fa-circle-question"></i></li></a>
-                                      <a href="">   <li>Featured <i class="fa-solid fa-circle-question"></i></li></a>
-                                      <a href="">  <li>Highlight <i class="fa-solid fa-circle-question"></i></li></a>
-                                      <a href="">  <li>Repost <i class="fa-solid fa-circle-question"></i></li></a>
-                                      <a href="">  <li>Urgent <i class="fa-solid fa-circle-question"></i></li></a>
-                                      <a href="">  <li>Website link <i class="fa-solid fa-circle-question"></i></li></a>
-                                     </ul></td>
-                                    <td>
+                                @foreach($user_adds as $key => $adds)
+    <tr>
+    <td> {{$key+1}}</td>
+    <td><img class=" mr-2" width="100" height="80" src="{{asset($adds->main_image)}}"><br>
+     <span> {{$adds->post_title}}</span></td>
+    <td>
+      @if( $adds->status == 1)
+      Published on: <br>
+      {{Carbon\Carbon::parse($adds->created_at)->diffForHumans()}}<br>
+      Expires on:
+      @else
+      <span class="text-danger ">Pending...</span>
+      @endif
+    </td>
+    <td>Visits:	<br>
+        Emails:	<br>
+        Phone clicks:
+    </td>
+    <td>        
+      <ul>
+      <a href=""><li> VIP Carousel <i class="fa-solid fa-circle-question"></i></li></a>
+      <a href=""><li>Featured <i class="fa-solid fa-circle-question"></i></li></a>
+      <a href=""><li>Highlight <i class="fa-solid fa-circle-question"></i></li></a>
+      <a href=""><li>Repost <i class="fa-solid fa-circle-question"></i></li></a>
+      <a href=""><li>Urgent <i class="fa-solid fa-circle-question"></i></li></a>
+      <a href=""><li>Website link <i class="fa-solid fa-circle-question"></i></li></a>
+      </ul>
+    </td>
+    <td>
                                         
-                                        <button class="btn btn-light" style="margin-left: 5px;" type="submit">
-                                        <a href="">    <i class=" fa fa-eye"> </i></a>
-                                        </button>
-  
-                                        <button class="btn btn-light" style="margin-left: 5px;" type="submit">
-                                    <a href="">
-                                        <i class="fa fa-pencil-alt" style="font-size: 15px;"></i>
-                                         </a>
-                                        </button>
-                            
-                                        <button class="btn btn-light" style="margin-left: 5px;" type="submit">
-                                        <a href="" id="delete">
-                                       
-                                        <i class="fa fa-trash" style="font-size: 15px;"></i> </a>
-                                        </button>
-                                       
-                                          <button class="btn btn-light" style="margin-left: 5px;" type="submit">
-                                            <a href="" id="delete">
-                                           
-                                            <i class="fa fa-thumbs-up" style="font-size: 15px;"></i> </a>
-                                            </button>
-                                    </td>
-                                </tr>
+        <button class="btn btn-light" style="margin-left: 5px;" type="submit"  title="View">
+          <a href="{{route('View.clasified.add',$adds->id)}}"> <i class=" fa fa-eye"> </i></a>
+        </button>
+
+        <button class="btn btn-light" style="margin-left: 5px;" type="submit" title="Modify">
+          <a href="{{route('edit.clasified.add',$adds->id)}}"> <i class="fa fa-pencil-alt" style="font-size: 15px;"></i></a>
+        </button>
+
+        <button class="btn btn-light" style="margin-left: 5px;" type="submit" title="Delete">
+          <a href="{{route('delete.clasified.add',$adds->id)}}" id="delete"><i class="fa fa-trash" style="font-size: 15px;"></i> </a>
+        </button>
+        
+        <button class="btn btn-light" style="margin-left: 5px;" type="submit" title="Deactivate">
+          <a href="" id="delete"><i class="fa fa-thumbs-up" style="font-size: 15px;"></i> </a>
+        </button>
+    </td>
+</tr>
+@endforeach
                           
         
                             </tbody>
@@ -117,25 +126,7 @@
 
 </div>
 
-<div class="colspan_div">
-  <div class="row">
-    <div class="col-auto">
-        <div class="tabsBtn">
-          <button type="button" name="button">repost</button>
-        </div>
-    </div>
-    <div class="col-auto">
-        <div class="tabsBtn">
-          <button type="button" name="button">Repost all eligible ads</button>
-        </div>
-    </div>
-    <div class="col-auto">
-        <div class="tabsBtn">
-          <button type="button" name="button">Deactivate</button>
-        </div>
-    </div>
-  </div>
-</div>
+
 </div>
 
 </section>

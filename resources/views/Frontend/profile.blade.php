@@ -15,37 +15,47 @@
            
                     <div class="postCardMain">
                         <div class="postHeader text-dark">
-                            <h4>    Hi <strong>{{$user_detail->name}}</strong> Update Your Profile</h4>
+                            <h4> Hi <strong>{{$user_detail->name}}</strong> Update Your Profile</h4>
                         </div>
                         <div class="row">
                             <div class="col-lg-4 col-md-5 col-12">
-                                <div class="card_Class">
-                                    <div class="card">
-                                        <img class=" card-img-top" src="{{asset($user_detail->profile_photo_path)}}"  alt="Card image cap"
-                                            id="img">
-                                        <div class="postBody">
-                                            <div class="fileUploadCol">
-                                                <div class="upload__box">
-                                                    <div class="upload__btn-box">
-                                                        <label class=" classupload">
-                                                            {{-- <span><img src="images/upload-icon.svg" alt="..."></span> --}}
-                                                            <p class="uplodework">Upload images</p>
-                                                            <input type="file" data-max_length="20"
-                                                                class="upload__inputfile" accept="image/*" onchange="document.getElementById('img').src = window.URL.createObjectURL(this.files[0])">
-                                                        </label>
-                                                    </div>
-                                              
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+    <form action="{{route('update.profile.photo', $user_detail->id)}}" method="post" enctype="multipart/form-data">
+        @csrf 
+
+        <input type="hidden" name="old_image" value="{{$user_detail->profile_photo_path}}">
+        <div class="card_Class">
+        <div class="card">                                
+        <img class=" card-img-top" src="{{(!empty($user_detail->profile_photo_path)) ?
+         asset($user_detail->profile_photo_path):url('upload/no_image.jpg')}}"  alt="Card image cap"
+            id="img">
+                <div class="postBody">
+                    <div class="fileUploadCol">
+                        <div class="upload__box">
+                            <div class="upload__btn-box">
+        <label class=" classupload">
+            {{-- <span><img src="images/upload-icon.svg" alt="..."></span> --}}
+            <p class="uplodework">Choose images</p>
+            <input type="file" name="profile_photo_path" data-max_length="20"
+                class="upload__inputfile" accept="image/*" onchange="document.getElementById('img').src = window.URL.createObjectURL(this.files[0])">
+        </label>
+        <label class=" classupload">
+            {{-- <span><img src="images/upload-icon.svg" alt="..."></span> --}}
+            <p class="uplodework">Upload</p>
+            <input type="submit" data-max_length="20"
+                class="upload__inputfile">
+        </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 <div class="restpsd_content">
          <div class="restPsd">
                        <h5>Reset password</h5>
         <form method="post" action="{{route('user.password.update')}}" >
-            @csrf
-                                            
+            @csrf                            
                 <div class="form-group">
                 <h6>Current password <span class="text-danger">*</span></h6>
                 <div class="controls">
@@ -75,15 +85,12 @@
                     @enderror
                 </div>
                 </div>
-                   
-                         
-                
-                             <div class="form-group">
-                            <button type="submit" class="btn btn-primary">
-                                Reset
-                            </button>
-                                </div>
-                            </form>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+                        Reset
+                    </button>
+                </div>
+            </form>
                                      
                                     </div>
 </div>
@@ -130,11 +137,11 @@
                                
                                         <div class="form-group">
                                             <label for="staticEmail" class="col-sm-2 col-form-label">Gender </label>
-                                            <select name="cars" id="cars" name="gender">
+                                            <select  name="gender">
                                                 <option selected="" disabled="">Select Gender</option>
                                                 <option value="male"  {{($user_detail->gender == 'male') ? 'selected' :' ' }}>Male</option>
                                                 <option value="female"  {{($user_detail->gender == 'female') ? 'selected' :' ' }}>Female</option>
-                                                <option value="other">Other</option>
+                                                <option value="other" >Other</option>
                                             </select>
                                         </div>
                                                 
@@ -159,13 +166,13 @@
                                         <div class="row mt-3">
                                             <div class="col-12">
                                                 <h6>Email Preferences</h6>
-                                                <input type="checkbox"  name="vehicle1" value="Bike">
+                                                <input type="checkbox"  name="email_notification" value="1" {{$user_detail->email_notification == 1 ?"checked" :""}} >
                                                 <label for="vehicle1"> I wish to receive the Repost Notification
                                                     email</label><br>
-                                                <input type="checkbox"  name="vehicle2" value="Car">
+                                                <input type="checkbox"  name="newsletters" value="1" {{$user_detail->newsletters == 1 ?"checked" :""}} >
                                                 <label for="vehicle2"> I wish to receive newsletters from
                                                     domybiding</label><br>
-                                                <input type="checkbox"  name="vehicle3" value="Boat">
+                                                <input type="checkbox"  name="special_offers"  value="1" {{$user_detail->special_offers == 1 ?"checked" :""}} >
                                                 <label for="vehicle3"> I wish to receive special offers from selected
                                                     3rd
                                                     parties</label><br><br>

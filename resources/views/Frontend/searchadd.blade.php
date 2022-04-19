@@ -105,8 +105,8 @@
           </div>
 
           <div class="propResultCol">
-            {{-- post  --}}
-            @foreach($$items as $key => $values)
+           {{-- post  --}} 
+            @foreach($get_search as $key => $values)
             <div class="listColMain">
               <a href="{{route('frontend.add.page',$values->id )}}" class="blankLink"></a>
               <div class="row g-3">
@@ -147,7 +147,7 @@
             <div class="paginationCol">
               <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
-                    {{ $items->links() }}
+                    {{-- {{ $items->links() }} --}}
                 </ul>
               </nav>
             </div>

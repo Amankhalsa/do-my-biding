@@ -16,6 +16,8 @@ use Redirect,Response;
 use Image;
 use Auth;
 use Tracker;
+use Mail;
+use App\Mail\WelcomeMail;
 use Illuminate\Support\Facades\DB;
 class HomeContoller extends Controller
 {
@@ -39,4 +41,15 @@ class HomeContoller extends Controller
     }
 
 
+
+
+    public function  sendmail(){
+
+        Mail::to('amansin31@gmail.com')->send(new WelcomeMail());
+        return redirect()->route('home.page');
+
+    }
+
+
+   
 }
